@@ -9,13 +9,17 @@ list_values = ['70 The Pond Rd', 'Toronto', 'Canada', 'M3J3M6', 'ON']
 
 def create_dictionary(keys, values):
     # Place code here - refer to function specifics in section below
-    for i in (keys,values):
-    	 return dict(keys[i]=values[i])
-   
+	my_dict = {}
+	i = 0
+	while i < len(keys):
+		my_dict.update({keys[i]:values[i]})
+		i = i + 1
+	return my_dict
+	
 
 def shared_values(dict1, dict2):
     # Place code here - refer to function specifics in section below
-    return (set(dict1) & set(dict2))
+    return (set(dict1.values()) & set(dict2.values()))
 
 if __name__ == '__main__':
     york = create_dictionary(list_keys, list_values)
