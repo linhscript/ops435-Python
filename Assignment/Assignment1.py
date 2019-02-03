@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 def dbda(var1,var2):
-  validate(var1)
+	validate(var1)
 
 
-  return result
+	return result
 
 def validate(var1):
 	if (len(var1) != 8):   # Check date format
 		print("Wrong date format")
+		exit()
 	else:
 		year = int(var1[0:4])
 		month = int(var1[4:6])
@@ -32,15 +33,37 @@ def validate(var1):
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
 			print("Wrong month input")
+			exit()
 		else:
 			day_max = mon_max[month]
 			if day not in range (1,day_max+1):    ### Plus 1 to take the last value
 				print("Wrong day input")
+				exit()
 
 		return mon_max
 
 def tomorow(var1):
-	validate(var1)
+	mon_max = validate(var1)
+	year = int(var1[0:4])
+	month = int(var1[4:6])
+	day = int(var1[6:])
+
+	tmr_day = day + 1
+	
+	if tmr_day > mon_max[month]: 
+		tmr_day = 1
+		month = month + 1
+		if month > 12:
+			month = 1
+			year = year + 1
+
+	next_date = str(year)+str(month).zfill(2)+str(tmr_day).zfill(2)
+	print (next_date)
+	return next_date
+	
+
+
+
 
 	
 
@@ -48,10 +71,10 @@ def tomorow(var1):
 
 
 if __name__ == "__main__":
-  var1 = '2019033'
-  var2 = +3
-  var3 = -3
-  #dbda(var1,var2)
-  #dbda(var1,var3)
-  #validate(var1)
-  tomorow(var1)
+	var1 = '20191561'
+	var2 = +3
+	var3 = -3
+	#dbda(var1,var2)
+	#dbda(var1,var3)
+	validate(var1)
+	tomorow(var1)
