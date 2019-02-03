@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 def dbda(var1,var2):
-	validate(var1)
+	mon_max = validate(var1)
 
 
 	return result
+
+
 
 def validate(var1):
 	if (len(var1) != 8):   # Check date format
@@ -61,8 +63,25 @@ def tomorow(var1):
 	print (next_date)
 	return next_date
 	
+def yesterday(var1):
+	mon_max = validate(var1)
+	year = int(var1[0:4])
+	month = int(var1[4:6])
+	day = int(var1[6:])
 
+	yst_day = day - 1
+	if yst_day == 0:
+		month = month - 1
+		if month == 0:
+			year = year -1
+			month = 12
+			yst_day = 31
+		else:
+			yst_day = mon_max[month]
 
+	day_before = str(year)+str(month).zfill(2)+str(yst_day).zfill(2)
+	print(day_before)
+	return day_before
 
 
 	
@@ -71,10 +90,11 @@ def tomorow(var1):
 
 
 if __name__ == "__main__":
-	var1 = '20191561'
+	var1 = '20190101'
 	var2 = +3
 	var3 = -3
 	#dbda(var1,var2)
 	#dbda(var1,var3)
-	validate(var1)
-	tomorow(var1)
+	#validate(var1)
+	#tomorow(var1)
+	yesterday(var1)
