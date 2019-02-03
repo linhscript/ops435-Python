@@ -40,9 +40,9 @@ def validate(var1):
 
 	return mon_max
 
-def tomorow(var1,num):
+def tomorow(var1):
 	validate(var1)
-	print(mon_max)
+	
 
 #def yesterday(var1, num)
 
@@ -54,4 +54,4 @@ if __name__ == "__main__":
   #dbda(var1,var2)
   #dbda(var1,var3)
   #validate(var1)
-  tomorow(var1, 4)
+  tomorow(var1)
