@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
+'''
+This script is written by Linh Van Ha
+'''
 
 def dbda(var1,var2):
+	'''
+	The dbda() function will take a date in "YYYYMMDD" format,
+	a positive or negative integer, and return a date either before 
+	or after the given date according to the value of the given integer in the same format.
+	'''
 	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
@@ -40,6 +48,10 @@ def dbda(var1,var2):
 
 
 def leap_year(year_value):
+	'''
+	The leapyear() function will take a year in "YYYY" format, 
+	and return True if the given year is a leap year, otherwise return False.
+	'''
 	if (year_value % 4 == 0):
 		if (year_value % 100 == 0):
 			if (year_value % 400 ==0):
@@ -55,6 +67,10 @@ def leap_year(year_value):
 	return mon_max
 
 def validate(var1):
+	'''
+	The validdate() function will take a date in "YYYYMMDD" format, 
+	and return True if the given date is a valid date, otherwise return False.
+	'''
 	if (len(var1) != 8):   # Check date format
 		print("Wrong date format")
 		exit()
@@ -76,6 +92,10 @@ def validate(var1):
 
 
 def tomorow(var1):
+	'''
+	The tomorrow() function will take a date in "YYYYMMDD" format and return the date of the next day in the same format.
+	Next paragraph is a sample python code for the tomorrow() function.
+	'''
 	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
@@ -95,6 +115,10 @@ def tomorow(var1):
 	return next_date
 	
 def yesterday(var1):
+	'''
+	The yesterday() function will take a date in "YYYYMMDD" format 
+	and return the date of the previous day in the same format.
+	'''
 	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
@@ -116,10 +140,6 @@ def yesterday(var1):
 
 
 	
-
-#def yesterday(var1, num)
-
-
 if __name__ == "__main__":
 	var1 = '20180523'
 	var2 = '-1700'
