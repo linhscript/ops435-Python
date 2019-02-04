@@ -180,6 +180,7 @@ def yesterday(var1):
 	
 if __name__ == "__main__":
 	usage()	
+	sys.argv[1] == '--step'
 	if sys.argv[1] == '--step':
 		var1 = sys.argv[2]
 		var2 = sys.argv[3]
