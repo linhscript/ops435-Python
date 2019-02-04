@@ -38,37 +38,54 @@ def dbda(var1,var2):
 	mon_max = leap_year(year)
 	num = abs(int(var2))
 
-	if int(var2) > 0:
-		forward_day = day + num
-		
-		while forward_day > mon_max[month]:
-			forward_day = forward_day - mon_max[month]
-			month = month +1
-			if month > 12:
-				year = year + 1
-				month = 1
-				mon_max = leap_year(year)
+	if sys.argv[1] == '--step':
+		i = 0
+		if int(var2) > 0:
+			while i < int(var2):
+				result = tomorrow(var1)
+				i += 1
+				return result
+		elif int(var2) < 0:
+			while i > int(var2):
+				result = yesterday(var1)
+				i -=1
+				return result
+		else:
+			result = var1
 
-		result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
-		
-
-	elif int(var2) < 0:
-		backward_day = day - num
-
-		while backward_day <= 0:
-			month = month - 1
-			if month == 0:
-				month = 12
-				year = year - 1
-				mon_max = leap_year(year)
-			backward_day = backward_day + mon_max[month]
-
-		result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
-		
 	else:
-		result = str(year)+str(month).zfill(2)+str(day).zfill(2)
 
-	return result
+		if int(var2) > 0:
+			forward_day = day + num
+			
+			while forward_day > mon_max[month]:
+				forward_day = forward_day - mon_max[month]
+				month = month +1
+				if month > 12:
+					year = year + 1
+					month = 1
+					mon_max = leap_year(year)
+
+			result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
+			
+
+		elif int(var2) < 0:
+			backward_day = day - num
+
+			while backward_day <= 0:
+				month = month - 1
+				if month == 0:
+					month = 12
+					year = year - 1
+					mon_max = leap_year(year)
+				backward_day = backward_day + mon_max[month]
+
+			result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
+			
+		else:
+			result = str(year)+str(month).zfill(2)+str(day).zfill(2)
+
+		return result
 
 def leap_year(year_value):
 	'''
@@ -114,7 +131,7 @@ def validate(var1):
 				exit()
 
 
-def tomorow(var1):
+def tomorrow(var1):
 	'''
 	The tomorrow() function will take a date in "YYYYMMDD" format and return the date of the next day in the same format.
 	Next paragraph is a sample python code for the tomorrow() function.
@@ -162,7 +179,7 @@ def yesterday(var1):
 
 	
 if __name__ == "__main__":
-		
+	usage()	
 	if sys.argv[1] == '--step':
 		var1 = sys.argv[2]
 		var2 = sys.argv[3]
