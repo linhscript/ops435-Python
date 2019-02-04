@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 def dbda(var1,var2):
-	mon_max = validate(var1)
+	mon_max = leap_year(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
@@ -36,29 +36,31 @@ def dbda(var1,var2):
 		return result
 
 
+def leap_year(var1):
+	year = int(var1[0:4])
+	month = int(var1[4:6])
+	day = int(var1[6:])
+    
+	if (year % 4 == 0):
+		if (year % 100 == 0):
+			if (year % 400 ==0):
+				feb = 29
+			else:
+				feb = 28
+		else:
+			feb = 29
+	else:
+		feb = 28
+    ## Done Check Leaf year
+	mon_max = { 1:31, 2:feb, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}	
+	return mon_max
+
 def validate(var1):
 	if (len(var1) != 8):   # Check date format
 		print("Wrong date format")
 		exit()
 	else:
-		year = int(var1[0:4])
-		month = int(var1[4:6])
-		day = int(var1[6:])
-	    
-		if (year % 4 == 0):
-			if (year % 100 == 0):
-				if (year % 400 ==0):
-					feb = 29
-				else:
-					feb = 28
-			else:
-				feb = 29
-		else:
-			feb = 28
-	    ## Done Check Leaf year
-
-		mon_max = { 1:31, 2:feb, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
-
+		mon_max = leap_year(var1)
 
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
@@ -70,10 +72,9 @@ def validate(var1):
 				print("Wrong day input")
 				exit()
 
-		return mon_max
 
 def tomorow(var1):
-	mon_max = validate(var1)
+	mon_max = leap_year(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
@@ -92,7 +93,7 @@ def tomorow(var1):
 	return next_date
 	
 def yesterday(var1):
-	mon_max = validate(var1)
+	mon_max = leap_year(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
