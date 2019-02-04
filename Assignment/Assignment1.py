@@ -2,6 +2,9 @@
 '''
 This script is written by Linh Van Ha
 '''
+import sys
+var1 = sys.agrv[1]
+var2 = sys.argv[2]
 
 def dbda(var1,var2):
 	'''
@@ -141,9 +144,6 @@ def yesterday(var1):
 
 	
 if __name__ == "__main__":
-	var1 = '20180523'
-	var2 = '-1700'
-	var3 = '-365'
 	dbda(var1,var2)
 	#dbda(var1,var3)
 	#validate(var1)
