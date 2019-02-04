@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 def dbda(var1,var2):
+	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
