@@ -5,7 +5,7 @@ def dbda(var1,var2):
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-	num = abs(var2)
+	num = abs(int(var2))
 
 	if int(var2) > 0:
 		forward_day = day + num
@@ -18,6 +18,7 @@ def dbda(var1,var2):
 				month = 1
 
 		result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
+		print (result)
 		return result
 
 	else:
@@ -25,21 +26,14 @@ def dbda(var1,var2):
 
 		while backward_day <= 0:
 			month = month - 1
-			backward_day = backward_day + mon_max[month]
 			if month == 0:
-				month = 13
+				month = 12
+				year = year - 1
+			backward_day = backward_day + mon_max[month]
 
 		result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
+		print (result)
 		return result
-			
-
-
-
-
-
-		
-
-
 
 
 def validate(var1):
@@ -124,11 +118,11 @@ def yesterday(var1):
 
 
 if __name__ == "__main__":
-	var1 = '20190523'
-	var2 = +3
-	var3 = -3
+	var1 = '20180523'
+	var2 = '+365'
+	var3 = '-365'
 	#dbda(var1,var2)
-	#dbda(var1,var3)
+	dbda(var1,var3)
 	#validate(var1)
 	#tomorow(var1)
-	yesterday(var1)
+	#yesterday(var1)
