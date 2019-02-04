@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
 '''
-This script is written by Linh Van Ha
+OPS435 Assignment 1 - Fall 2018
+Program: [vlha].py (replace vlha with your Seneca User name)
+Author: "Linh Van Ha"
+The python code in this file ([vlha.py) is original work written by
+"Linh Van Ha". No code in this file is copied from any other source 
+except those provided by the course instructor, including any person, 
+textbook, or on-line resource. I have not shared this python script 
+with anyone or anything except for submission for grading.  
+I understand that the Academic Honesty Policy will be enforced and 
+violators will be reported and appropriate action will be taken.
 '''
 import sys
-var1 = sys.agrv[1]
-var2 = sys.argv[2]
+
+
+def usage ():
+	if sys.argv[1] == '--step':
+		if len(sys.argv) != 4: 
+			print (sys.argv[0] + '--step' +'YYYYMMDD' + '-/+')
+			exit()
+	else:
+		if len(sys.argv) != 3: 
+			print (sys.argv[0]  +'YYYYMMDD' + '-/+')
+			exit()
+
 
 def dbda(var1,var2):
 	'''
@@ -31,10 +50,9 @@ def dbda(var1,var2):
 				mon_max = leap_year(year)
 
 		result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
-		print (result)
-		return result
+		
 
-	else:
+	elif int(var2) < 0:
 		backward_day = day - num
 
 		while backward_day <= 0:
@@ -46,9 +64,11 @@ def dbda(var1,var2):
 			backward_day = backward_day + mon_max[month]
 
 		result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
-		print (result)
-		return result
+		
+	else:
+		result = str(year)+str(month).zfill(2)+str(day).zfill(2)
 
+	return result
 
 def leap_year(year_value):
 	'''
@@ -114,7 +134,6 @@ def tomorow(var1):
 			year = year + 1
 
 	next_date = str(year)+str(month).zfill(2)+str(tmr_day).zfill(2)
-	print (next_date)
 	return next_date
 	
 def yesterday(var1):
@@ -138,13 +157,23 @@ def yesterday(var1):
 			yst_day = mon_max[month]
 
 	day_before = str(year)+str(month).zfill(2)+str(yst_day).zfill(2)
-	print(day_before)
 	return day_before
 
 
 	
 if __name__ == "__main__":
-	dbda(var1,var2)
+		
+	if sys.argv[1] == '--step':
+		var1 = sys.argv[2]
+		var2 = sys.argv[3]
+	else:
+		var1 = sys.argv[1]
+		var2 = sys.argv[2]
+
+	print(dbda(var1,var2))
+
+
+
 	#dbda(var1,var3)
 	#validate(var1)
 	#tomorow(var1)
