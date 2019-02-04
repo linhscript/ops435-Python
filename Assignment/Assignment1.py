@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 def dbda(var1,var2):
-	mon_max = leap_year(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
+	mon_max = leap_year(year)
 	num = abs(int(var2))
 
 	if int(var2) > 0:
@@ -16,6 +16,7 @@ def dbda(var1,var2):
 			if month > 12:
 				year = year + 1
 				month = 1
+				mon_max = leap_year(year)
 
 		result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
 		print (result)
@@ -29,6 +30,7 @@ def dbda(var1,var2):
 			if month == 0:
 				month = 12
 				year = year - 1
+				mon_max = leap_year(year)
 			backward_day = backward_day + mon_max[month]
 
 		result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
@@ -36,14 +38,10 @@ def dbda(var1,var2):
 		return result
 
 
-def leap_year(var1):
-	year = int(var1[0:4])
-	month = int(var1[4:6])
-	day = int(var1[6:])
-    
-	if (year % 4 == 0):
-		if (year % 100 == 0):
-			if (year % 400 ==0):
+def leap_year(year_value):
+	if (year_value % 4 == 0):
+		if (year_value % 100 == 0):
+			if (year_value % 400 ==0):
 				feb = 29
 			else:
 				feb = 28
@@ -60,7 +58,10 @@ def validate(var1):
 		print("Wrong date format")
 		exit()
 	else:
-		mon_max = leap_year(var1)
+		year = int(var1[0:4])
+		month = int(var1[4:6])
+		day = int(var1[6:])
+		mon_max = leap_year(year)
 
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
@@ -74,11 +75,11 @@ def validate(var1):
 
 
 def tomorow(var1):
-	mon_max = leap_year(var1)
+	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-
+	mon_max = leap_year(year)
 	tmr_day = day + 1
 	
 	if tmr_day > mon_max[month]: 
@@ -93,11 +94,11 @@ def tomorow(var1):
 	return next_date
 	
 def yesterday(var1):
-	mon_max = leap_year(var1)
+	validate(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-
+	mon_max = leap_year(year)
 	yst_day = day - 1
 	if yst_day == 0:
 		month = month - 1
@@ -120,10 +121,11 @@ def yesterday(var1):
 
 if __name__ == "__main__":
 	var1 = '20180523'
-	var2 = '+365'
+	var2 = '-1700'
 	var3 = '-365'
-	#dbda(var1,var2)
-	dbda(var1,var3)
+	dbda(var1,var2)
+	#dbda(var1,var3)
 	#validate(var1)
 	#tomorow(var1)
 	#yesterday(var1)
+	#leap_year(var1)
