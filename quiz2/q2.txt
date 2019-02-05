@@ -1,0 +1,10 @@
+(a) object type = list,string,number
+
+(b) c = d
+
+(c) The purpose of the for loop is to convert input to string and if string has 
+upper case, it will convert to lowercase character. It will look into the each item in the list and remove all the character which is not in the target list. Then return it in to decimal number
+
+(d) return value = 15
+
+(e) return value = 1109421
