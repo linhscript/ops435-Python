@@ -31,61 +31,22 @@ def dbda(var1,var2):
 	a positive or negative integer, and return a date either before 
 	or after the given date according to the value of the given integer in the same format.
 	'''
-	validate(var1)
-	year = int(var1[0:4])
-	month = int(var1[4:6])
-	day = int(var1[6:])
-	mon_max = leap_year(year)
-	num = abs(int(var2))
-
-	if sys.argv[1] == '--step':
-		i = 0
-		if int(var2) > 0:
-			while i < int(var2):
-				result = tomorrow(var1)
-				i += 1
-				return result
-		elif int(var2) < 0:
-			while i > int(var2):
-				result = yesterday(var1)
-				i -=1
-				return result
-		else:
-			result = var1
-
+	i = 0
+	result = var1
+	if int(var2) > 0: # When var2 is positive (calculate day forward)
+		while i < int(var2):  # Plus one day until i not less than thw 
+			i += 1
+			result = tomorrow(result)
+			
+	elif int(var2) < 0:  # When var2 is negative (calculate day backward)
+		while i > int(var2):
+			result = yesterday(result)
+			i = i - 1
+			
 	else:
+		result = result
 
-		if int(var2) > 0:
-			forward_day = day + num
-			
-			while forward_day > mon_max[month]:
-				forward_day = forward_day - mon_max[month]
-				month = month +1
-				if month > 12:
-					year = year + 1
-					month = 1
-					mon_max = leap_year(year)
-
-			result = str(year)+str(month).zfill(2)+str(forward_day).zfill(2)
-			
-
-		elif int(var2) < 0:
-			backward_day = day - num
-
-			while backward_day <= 0:
-				month = month - 1
-				if month == 0:
-					month = 12
-					year = year - 1
-					mon_max = leap_year(year)
-				backward_day = backward_day + mon_max[month]
-
-			result = str(year)+str(month).zfill(2)+str(backward_day).zfill(2)
-			
-		else:
-			result = str(year)+str(month).zfill(2)+str(day).zfill(2)
-
-		return result
+	return result
 
 def leap_year(year_value):
 	'''
