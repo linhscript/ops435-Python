@@ -17,11 +17,11 @@ import sys
 def usage ():
 	if sys.argv[1] == '--step':
 		if len(sys.argv) != 4: 
-			print (sys.argv[0] + '--step' +'YYYYMMDD' + '-/+')
+			print (sys.argv[0] + ' --step' +' YYYYMMDD' + ' -/+')
 			exit()
 	else:
 		if len(sys.argv) != 3: 
-			print (sys.argv[0]  +'YYYYMMDD' + '-/+')
+			print (sys.argv[0]  +' YYYYMMDD' + ' -/+')
 			exit()
 
 
@@ -36,17 +36,28 @@ def dbda(var1,var2):
 	if int(var2) > 0: # When var2 is positive (calculate day forward)
 		while i < int(var2):  # Plus one day until i not less than thw 
 			i += 1
-			result = tomorrow(result)
+			if sys.argv[1] == '--step':
+				result = tomorrow(result)
+				print(result)
+			else:
+				result = tomorrow(result)				
+
 			
 	elif int(var2) < 0:  # When var2 is negative (calculate day backward)
 		while i > int(var2):
-			result = yesterday(result)
 			i = i - 1
+			if sys.argv[1] == '--step':
+				result = yesterday(result)
+				print(result)
+			else:
+				result = yesterday(result)			
 			
 	else:
 		result = result
-
-	return result
+	if sys.argv[1] == '--step':
+		print('', end='')
+	else:
+		print(result) 
 
 def leap_year(year_value):
 	'''
@@ -73,7 +84,7 @@ def validate(var1):
 	and return True if the given date is a valid date, otherwise return False.
 	'''
 	if (len(var1) != 8):   # Check date format
-		print("Wrong date format")
+		print("Error: wrong date entered")
 		exit()
 	else:
 		year = int(var1[0:4])
@@ -83,12 +94,12 @@ def validate(var1):
 
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
-			print("Wrong month input")
+			print("Error: wrong month entered")
 			exit()
 		else:
 			day_max = mon_max[month]
 			if day not in range (1,day_max+1):    ### Plus 1 to take the last value
-				print("Wrong day input")
+				print("Error: wrong day entered")
 				exit()
 
 
@@ -149,7 +160,7 @@ if __name__ == "__main__":
 		var1 = sys.argv[1]
 		var2 = sys.argv[2]
 
-	print(dbda(var1,var2))
+	dbda(var1,var2)
 
 
 
