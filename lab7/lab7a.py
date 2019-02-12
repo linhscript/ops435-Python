@@ -26,13 +26,22 @@ class Person:
     	(self.name_list).append(self.name)
     	return self.name_list
 
+
 # Store information about different models from a specific manufacturer. Perhaps how many seats they have and how much fuel they use and the price range:
 # Doesn't have to be BMW, pick any car or bike manufacturer:
 class BMWModel:
 	def __init__(self,models):
 		self.models = str(models)
-    
+		self.info = {}
 
+	def add_seat (self,seat,quantity):
+		self.info[seat] = int(quantity)
+		return self.info
+
+	def add_fuel (self,fuel,number):
+		self.info[fuel] = int(number)	
+		return self.info
 # Store information about a specific car that someone owns.
 # Spend some time thinking why this class is different than the one above, and whether it has to be different:
 class Car:
+	
