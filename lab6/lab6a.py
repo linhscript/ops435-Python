@@ -5,12 +5,12 @@ class Student:
     # Define the name and number when a student object is created, ex. student1 = Student('john', 025969102)
     def __init__(self, name, number):
         self.name = name
-        self.number = int(number)
+        self.number = str(number)
         self.courses = {}
 
     # Return student name and number
     def displayStudent(self):
-        return 'Student Name: ' + self.name + '\n' + 'Student Number: ' + str(self.number)
+        return 'Student Name: ' + self.name + '\n' + 'Student Number: ' + self.number
 
     # Add a new course and grade to students record
     def addGrade(self, course, grade):
@@ -21,7 +21,11 @@ class Student:
         gpa = 0.0
         for course in self.courses.keys():
             gpa = gpa + self.courses[course]
-        return 'GPA of student ' + self.name + ' is ' + str(gpa / len(self.courses))
+            try:
+                result = gpa / len(self.courses)
+            except ZeroDivisionError:
+                return "Can not divide to 0"
+        return 'GPA of student ' + self.name + ' is ' + str(result)
 
     # Return a list of course that the student passed (not a 0.0 grade)
     def displayCourses(self):
