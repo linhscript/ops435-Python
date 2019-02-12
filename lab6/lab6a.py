@@ -21,10 +21,10 @@ class Student:
         gpa = 0.0
         for course in self.courses.keys():
             gpa = gpa + self.courses[course]
-            try:
-                result = gpa / len(self.courses)
-            except ZeroDivisionError:
-                result =  "Can not divide to 0"
+        try:
+            result = gpa / len(self.courses)
+        except ZeroDivisionError:
+            result =  "Can not divide to 0"
         return 'GPA of student ' + self.name + ' is ' + str(result)
 
     # Return a list of course that the student passed (not a 0.0 grade)
