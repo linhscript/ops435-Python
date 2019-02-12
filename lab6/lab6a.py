@@ -24,7 +24,7 @@ class Student:
         try:
             result = gpa / len(self.courses)
         except ZeroDivisionError:
-            result =  "Can not divide to 0"
+            result =  0
         return 'GPA of student ' + self.name + ' is ' + str(result)
 
     # Return a list of course that the student passed (not a 0.0 grade)
