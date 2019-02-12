@@ -10,7 +10,7 @@ class Student:
 
     # Return student name and number
     def displayStudent(self):
-        return 'Student Name: ' + self.name + '\n' + 'Student Number: ' + self.number
+        return 'Student Name: ' + self.name + '\n' + 'Student Number: ' + str(self.number)
 
     # Add a new course and grade to students record
     def addGrade(self, course, grade):
