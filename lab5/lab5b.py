@@ -23,15 +23,29 @@ def read_file_list(file_name):
 def append_file_string(file_name, string_of_lines):
     # Takes two strings, appends the string to the end of the file
 
-    f = open(filename,'a')
+    f = open(file_name,'a')
     f.write(string_of_lines)
     f.close()
 
 def write_file_list(file_name, list_of_lines):
     # Takes a string and list, writes all items from list to file where each item is one line
 
+    f = open(file_name,'w')
+    for i in list_of_lines:
+        f.write(str(i) + '\n')
+    f.close()
+
+
 def copy_file_add_line_numbers(file_name_read, file_name_write):
     # Takes two strings, reads data from first file, writes data to new file, adds line number to new file
+
+    f = open(file_name_read,'r')
+    text1 = f.readlines() # return a list
+    f.close()
+    g = open(file_name_write,'w')
+    for i in range(len(text1)):
+        g.write(str(i+1)+':'+text1[i])
+    g.close()
 
 
 if __name__ == '__main__':

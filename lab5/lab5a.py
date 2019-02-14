@@ -21,6 +21,6 @@ def read_file_list(file_name):
     return result
 
 if __name__ == '__main__':
-    file_name = 'data.txt'
+    file_name = 'test.txt'
     print(read_file_string(file_name))
     print(read_file_list(file_name))
