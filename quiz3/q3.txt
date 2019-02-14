@@ -1,0 +1,7 @@
+Q3 - Part B – Decoding
+Name: [Van Linh Ha]
+Student ID: [vlha@myseneca.ca]
+(a) Function Name: gpv
+(b) Function in (a) will take the letter grade of 'D' and return 1             
+(c) Function Name: gpa
+(d) Function in (c) can take the following object(s) without trigger any errors: string
