@@ -1,0 +1,8 @@
+Mid-Term Test – Decoding
+Name: [Van Linh Ha]
+Student ID: [ vlha@myseneca.ca]
+(a) function argument type: string
+(b) purpose of the for loop in wc(): remove all the sign (!@#$%^&*()_-+=[].,:;?) from the file
+(c) the type of object 'f' is: string
+(d) the type of information returned by object 'a' is: number of all words in the file
+(e) the type of information returned by object 'd' is: number of all characters in the file

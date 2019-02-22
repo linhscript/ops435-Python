@@ -15,14 +15,15 @@ import sys
 
 
 def usage ():
-	if sys.argv[1] == '--step':
-		if len(sys.argv) != 4: 
-			print (sys.argv[0] + ' --step' +' YYYYMMDD' + ' -/+')
-			exit()
-	else:
-		if len(sys.argv) != 3: 
-			print (sys.argv[0]  +' YYYYMMDD' + ' -/+')
-			exit()
+	'''
+	The usage() function will check if user input how many argument.
+	If user type the number of argument diffrent than 3 or 4, it will return the guidance how to user the command properly
+	'''
+
+	if ((len(sys.argv) != 4) and len(sys.argv) != 3): 
+		print (sys.argv[0] + ' [--step]' +' YYYYMMDD' + ' -/+')
+		exit()
+
 
 
 def dbda(var1,var2):
@@ -32,32 +33,47 @@ def dbda(var1,var2):
 	or after the given date according to the value of the given integer in the same format.
 	'''
 	i = 0
+	total = 0
 	result = var1
-	if int(var2) > 0: # When var2 is positive (calculate day forward)
-		while i < int(var2):  # Plus one day until i not less than thw 
-			i += 1
-			if sys.argv[1] == '--step':
+	if len(str(var2)) == 8:
+		validate(var2)
+		if var1 < var2:
+			while result < var2:  # Plus one day until i not less than thw 
+				total +=1
 				result = tomorrow(result)
-				print(result)
-			else:
-				result = tomorrow(result)				
-
-			
-	elif int(var2) < 0:  # When var2 is negative (calculate day backward)
-		while i > int(var2):
-			i = i - 1
-			if sys.argv[1] == '--step':
+		elif var1 > var2:
+			while result > var2:  # Plus one day until i not less than thw 
+				total +=1
 				result = yesterday(result)
-				print(result)
-			else:
-				result = yesterday(result)			
-			
-	else:
-		result = result
-	if sys.argv[1] == '--step':
-		print('', end='')
-	else:
-		print(result) 
+		print(total) 	
+
+	else:	
+		if int(var2) > 0: # When var2 is positive (calculate day forward)
+			while i < int(var2):  # Plus one day until i not less than thw 
+				i += 1
+				if sys.argv[1] == '--step':
+					result = tomorrow(result)
+					print(result)
+				else:
+					result = tomorrow(result)				
+
+				
+		elif int(var2) < 0:  # When var2 is negative (calculate day backward)
+			while i > int(var2):
+				i = i - 1
+				if sys.argv[1] == '--step':
+					result = yesterday(result)
+					print(result)
+				else:
+					result = yesterday(result)			
+				
+		else:
+			result = result
+
+		if sys.argv[1] == '--step':
+			print('', end='')
+		else:
+			print(result) 
 
 def leap_year(year_value):
 	'''
@@ -67,15 +83,23 @@ def leap_year(year_value):
 	if (year_value % 4 == 0):
 		if (year_value % 100 == 0):
 			if (year_value % 400 ==0):
-				feb = 29
+				is_leapyear = True
 			else:
-				feb = 28
+				is_leapyear = False
 		else:
-			feb = 29
+			is_leapyear = True
+	else:
+		is_leapyear = False
+    		
+	return is_leapyear
+
+def day_in_month(year_value):
+	if leap_year(year_value):
+		feb = 29
 	else:
 		feb = 28
-    ## Done Check Leaf year
-	mon_max = { 1:31, 2:feb, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}	
+
+	mon_max = { 1:31, 2:feb, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
 	return mon_max
 
 def validate(var1):
@@ -90,7 +114,7 @@ def validate(var1):
 		year = int(var1[0:4])
 		month = int(var1[4:6])
 		day = int(var1[6:])
-		mon_max = leap_year(year)
+		mon_max = day_in_month(year)
 
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
@@ -112,7 +136,7 @@ def tomorrow(var1):
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-	mon_max = leap_year(year)
+	mon_max = day_in_month(year)
 	tmr_day = day + 1
 	
 	if tmr_day > mon_max[month]: 
@@ -134,7 +158,7 @@ def yesterday(var1):
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-	mon_max = leap_year(year)
+	mon_max = day_in_month(year)
 	yst_day = day - 1
 	if yst_day == 0:
 		month = month - 1
@@ -148,11 +172,8 @@ def yesterday(var1):
 	day_before = str(year)+str(month).zfill(2)+str(yst_day).zfill(2)
 	return day_before
 
-
-	
 if __name__ == "__main__":
-	usage()	
-	sys.argv[1] == '--step'
+	usage()
 	if sys.argv[1] == '--step':
 		var1 = sys.argv[2]
 		var2 = sys.argv[3]
@@ -161,11 +182,3 @@ if __name__ == "__main__":
 		var2 = sys.argv[2]
 
 	dbda(var1,var2)
-
-
-
-	#dbda(var1,var3)
-	#validate(var1)
-	#tomorow(var1)
-	#yesterday(var1)
-	#leap_year(var1)
