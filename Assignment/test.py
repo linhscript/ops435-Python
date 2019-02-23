@@ -21,10 +21,14 @@ if __name__ == '__main__':
 	filename = 'usage_data_file'
 	parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
 	 epilog = "Copyright 2018 - Linh Van Ha")
-
+	parser.add_argument('F', help='generate user name or remote host IP from the given files')
 	parser.add_argument('-l {user,host}', '--list', choices = ['user','host']
 		,help='generate user name or remote host IP from the given files')
+	parser.add_argument('-r', '--rhost', help='usage report for the given remote host IP')
 	args = parser.parse_args()
+
+###################################################################
+
 
 	login_rec = read_login_rec (filename)
 	if args.list == 'user':
