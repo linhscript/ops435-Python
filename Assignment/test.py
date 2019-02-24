@@ -21,7 +21,11 @@ def cal_daily_usage(subject,login_recs):
 	''' docstring for this function
 	generate daily usage report for the given 
 	subject (user or remote host)'''
-
+	text = "Daily Usage Report for "
+	print(text+str(subject))
+	print(len(text+str(subject))*'=')
+	print("Date"+" "*10+"Usage in Seconds")
+	
 	return daily_usage
 
 if __name__ == '__main__':
@@ -60,7 +64,9 @@ if __name__ == '__main__':
 	elif args.user:
 		subject = args.user
 
-	if args.type
-
-
-	cal_daily_usage()
+	if args.type == 'daily':
+		cal_daily_usage(subject,)
+	elif args.type == 'weekly':
+		cal_weekly_usage(subject,)
+	else:
+		cal_monthly_usage(subject,)
