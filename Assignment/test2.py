@@ -1,3 +1,3 @@
-s = set()
-s.add(1)
-print(s)
+import time
+t = time.asctime()
+print(t)
