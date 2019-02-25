@@ -12,4 +12,9 @@ if __name__ == '__main__':
 	total = 0
 	record_list = []
 	for item in login_rec:
-		print(item.split())
+		old = item.split()
+		new = item.split()
+		record_list.append(old)
+		record_list.append(new)
+		print(old)
+	

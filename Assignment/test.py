@@ -24,16 +24,33 @@ if __name__ == '__main__':
 			record_list.append(item) # save the record to list
 		else:
 			next_day = time.mktime(time1) # float number
-			while day1 != day2:
-				eod_time = time.ctime(next_day).split()
-				eod_time[3] = '23:59:59'
+			
+			eod_time = time.ctime(next_day).split() #convert to readable time
+			old_day = item.split()
 
-				eod_time_float = time.mktime(time.strptime(' '.join(eod_time))) # no need format because eod time has default strptime format
+			old_day[9] = eod_time[0]
+			old_day[10] = eod_time[1]
+			old_day[11] = eod_time[2]
+			old_day[12] = '23:59:59'
+			old_day[13] = eod_time[4]							
+			record_list.append(old_day)
+			while doy1 != doy2:
+								
+				next_day = next_day + 86400 #floating number
+				new_day = item.split()
+				new_time = time.ctime(next_day).split() # covert to readable time
+				new_day[3] = new_time[0]
+				new_day[4] = new_time[1]
+				new_day[5] = new_time[2]
+				new_day[6] = '00:00:00'
+				new_day[7] = new_time[4]
+				doy1 = time.strftime('%j',time.localtime(next_day))
 
-				y_second = eod_time_float - next_day
-				print(y_second)
+				if doy1 != doy2: # check if next day is on the same day with end day or not
+					new_day[9] = new_time[0]
+					new_day[10] = new_time[1]
+					new_day[11] = new_time[2]
+					new_day[12] = '23:59:59'
+					new_day[13] = new_time[4]
+				record_list.append(new_day)
 
-				next_day = next_day + 86400
-				day1 = time.strftime('%j',time.localtime(next_day))
-
-			print(total)
