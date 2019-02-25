@@ -26,11 +26,39 @@ def cal_daily_usage(subject,login_recs):
     			daily_usage[time_format] = time_usage
     		total += time_usage
 
-    for key,value in daily_usage.items():
-    	print(str(key) +" "*(l//2)+ str(value))
+    for key in sorted(daily_usage.keys(),reverse=True):
+    	print(str(key) +" "*(l//2)+ str(daily_usage[key]))
     print("Total" +" "*(l//2),total)
 
     #return daily_usage
+
+def cal_weekly_usage(subject,login_recs):
+	''' docstring for this function
+	generate weekly usage report for the given 
+	subject (user or remote host)'''
+	text = "Weekly Usage Report for "
+	l = len(text+str(subject))
+	print(text+str(subject))
+	print(l*'=')
+	print("Week #"+" "*(l//2)+"Usage in Seconds")
+	total = 0
+	weekly_usage = {}
+	for value in login_recs:
+		if subject in value:
+			time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+			time_format = time.strftime('%Y %W',time.strptime(' '.join(value[9:14])))
+			try:
+				weekly_usage[time_format] += time_usage
+			except:
+				weekly_usage[time_format] = time_usage
+			total += time_usage
+
+	for key in sorted(weekly_usage.keys(),reverse=True):
+		print(str(key) +" "*(l//2)+ str(weekly_usage[key]))
+	print("Total" +" "*(l//2),total)
+
+def cal_monthly_usage(subject,login_recs):
+
 if __name__ == '__main__':
 	import time
 	
@@ -79,5 +107,5 @@ if __name__ == '__main__':
 					new_day[13] = new_time[4]
 				record_list.append(new_day)
 
-	cal_daily_usage('rchan',record_list)
+	cal_weekly_usage('rchan',record_list)
 

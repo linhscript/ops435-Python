@@ -42,18 +42,50 @@ def cal_daily_usage(subject,login_recs):
     generate daily usage report for the given 
     subject (user or remote host)'''
     text = "Daily Usage Report for "
+    l = len(text+str(subject))
     print(text+str(subject))
-    print(len(text+str(subject))*'=')
-    print("Date"+" "*10+"Usage in Seconds")
-    
-    return daily_usage
+    print(l*'=')
+    print("Date"+" "*(l//2)+"Usage in Seconds")
+    total = 0
+    daily_usage = {}
+    for value in login_recs:
+        if subject in value:
+            time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+            time_format = time.strftime('%Y %m %d',time.strptime(' '.join(value[9:14])))
+            try:
+                daily_usage[time_format] += time_usage
+            except:
+                daily_usage[time_format] = time_usage
+            total += time_usage
 
+    for key in sorted(daily_usage.keys(),reverse=True):
+        print(str(key) +" "*(l//2)+ str(daily_usage[key]))
+    print("Total" +" "*(l//2),total)
+    
 def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function
     generate weekly usage report for the given 
     subject (user or remote host)'''
-    [ put your python code for this function here ]
-    return weekly_usage
+    text = "Weekly Usage Report for "
+    l = len(text+str(subject))
+    print(text+str(subject))
+    print(l*'=')
+    print("Week #"+" "*(l//2)+"Usage in Seconds")
+    total = 0
+    weekly_usage = {}
+    for value in login_recs:
+        if subject in value:
+            time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+            time_format = time.strftime('%Y %W',time.strptime(' '.join(value[9:14])))
+            try:
+                weekly_usage[time_format] += time_usage
+            except:
+                weekly_usage[time_format] = time_usage
+            total += time_usage
+
+    for key in sorted(weekly_usage.keys(),reverse=True):
+        print(str(key) +" "*(l//2)+ str(weekly_usage[key]))
+    print("Total" +" "*(l//2),total)
 
 def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
