@@ -10,18 +10,26 @@ def cal_daily_usage(subject,login_recs):
     generate daily usage report for the given 
     subject (user or remote host)'''
     text = "Daily Usage Report for "
+    l = len(text+str(subject))
     print(text+str(subject))
-    print(len(text+str(subject))*'=')
-    print("Date"+" "*8+"Usage in Seconds")
+    print(l*'=')
+    print("Date"+" "*(l//2)+"Usage in Seconds")
     total = 0
     daily_usage = {}
     for value in login_recs:
     	if subject in value:
-    		daily_usage[]
     		time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+    		time_format = time.strftime('%Y %m %d',time.strptime(' '.join(value[9:14])))
+    		try:
+    			daily_usage[time_format] += time_usage
+    		except:
+    			daily_usage[time_format] = time_usage
     		total += time_usage
 
-    print(total)
+    for key,value in daily_usage.items():
+    	print(str(key) +" "*(l//2)+ str(value))
+    print("Total" +" "*(l//2),total)
+
     #return daily_usage
 if __name__ == '__main__':
 	import time
