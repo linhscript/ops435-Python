@@ -12,14 +12,16 @@ def cal_daily_usage(subject,login_recs):
     text = "Daily Usage Report for "
     print(text+str(subject))
     print(len(text+str(subject))*'=')
-    print("Date"+" "*10+"Usage in Seconds")
-    for name in login_recs:
-    	if name == subject:
-    		strftime
-    	else:
-    		print("There is no username %s in data" % subject)
-    		break
-    
+    print("Date"+" "*8+"Usage in Seconds")
+    total = 0
+    daily_usage = {}
+    for value in login_recs:
+    	if subject in value:
+    		daily_usage[]
+    		time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+    		total += time_usage
+
+    print(total)
     #return daily_usage
 if __name__ == '__main__':
 	import time
