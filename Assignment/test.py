@@ -13,6 +13,12 @@ def cal_daily_usage(subject,login_recs):
     print(text+str(subject))
     print(len(text+str(subject))*'=')
     print("Date"+" "*10+"Usage in Seconds")
+    for name in login_recs:
+    	if name == subject:
+    		strftime
+    	else:
+    		print("There is no username %s in data" % subject)
+    		break
     
     #return daily_usage
 if __name__ == '__main__':
@@ -62,6 +68,6 @@ if __name__ == '__main__':
 					new_day[12] = '23:59:59'
 					new_day[13] = new_time[4]
 				record_list.append(new_day)
-	
-	cal_daily_usage('rchan',login_rec)
+
+	cal_daily_usage('rchan',record_list)
 

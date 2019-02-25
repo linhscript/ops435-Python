@@ -108,9 +108,8 @@ if __name__ == '__main__':
             doy2 = time.strftime("%j",time2)
      
             if doy1 == doy2: # if same day
-                print(item)
                 record_list.append(item.split()) # save the record to list
-            else:
+            else: # this works even jump to many days
                 next_day = time.mktime(time1) # float number
                 
                 eod_time = time.ctime(next_day).split() #convert to readable time
