@@ -7,10 +7,8 @@ def read_login_rec(filelist):
 if __name__ == '__main__':
 	import time
 	
-	filelist = 'test_data'
+	filelist = 'usage_data_file'
 	test = read_login_rec(filelist)
 	l = []
-	for i in test:
-		l.append(i.split().copy())
-		print(i)
-	print(l)
+	print(test)
+

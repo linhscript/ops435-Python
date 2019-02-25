@@ -22,7 +22,17 @@ if __name__ == '__main__':
 			print(time.mktime(time1),time.mktime(time2))
 			total += abs(time.mktime(time1) - time.mktime(time2))
 		else:
-			#while doy1 != doy2:
-			print('87,780 seconds in total and 60,300 seconds in 14 and (27,479+200=27679) in 13')
+			next_day = time.mktime(time1) # float number
+			while day1 != day2:
+				eod_time = time.ctime(next_day).split()
+				eod_time[3] = '23:59:59'
 
-	print(total)
+				eod_time_float = time.mktime(time.strptime(' '.join(eod_time))) # no need format because eod time has default strptime format
+
+				y_second = eod_time_float - next_day
+				print(y_second)
+
+				next_day = next_day + 86400
+				day1 = time.strftime('%j',time.localtime(next_day))
+
+			print(total)

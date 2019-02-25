@@ -24,10 +24,7 @@ if __name__ == '__main__':
 
 	print(test[1])
 	
-
-	#Tue Feb 13 16:53:42 2018
-	record_list = result.copy()
-	print(record_list)
+	record_list = []]
 	next_day = time.mktime(time1) # float number
 	while day1 != day2:
 		eod_time = time.ctime(next_day).split()

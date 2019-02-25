@@ -98,9 +98,16 @@ if __name__ == '__main__':
     elif args.user:
         subject = args.user
 
-    if args.type == 'daily':
-        cal_daily_usage(subject,)
-    elif args.type == 'weekly':
-        cal_weekly_usage(subject,)
-    else:
-        cal_monthly_usage(subject,)
+    if args.type:
+
+        records_list = []
+
+
+
+
+        if args.type == 'daily':
+            cal_daily_usage(subject,records_list)
+        elif args.type == 'weekly':
+            cal_weekly_usage(subject,records_list)
+        else:
+            cal_monthly_usage(subject,records_list)
