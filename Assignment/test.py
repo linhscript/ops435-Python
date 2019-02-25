@@ -4,10 +4,21 @@ def read_login_rec(filelist):
 	login_rec = f.readlines()
 	f.close()
 	return login_rec
+
+def cal_daily_usage(subject,login_recs):
+    ''' docstring for this function
+    generate daily usage report for the given 
+    subject (user or remote host)'''
+    text = "Daily Usage Report for "
+    print(text+str(subject))
+    print(len(text+str(subject))*'=')
+    print("Date"+" "*10+"Usage in Seconds")
+    
+    #return daily_usage
 if __name__ == '__main__':
 	import time
 	
-	filelist = 'test_data'
+	filelist = 'usage_data_file'
 	login_rec = read_login_rec(filelist)
 	total = 0
 	record_list = []
@@ -19,10 +30,8 @@ if __name__ == '__main__':
 		doy2 = time.strftime("%j",time2)
  
 		if doy1 == doy2: # if same day
-			print(time.mktime(time1),time.mktime(time2))
-			total += abs(time.mktime(time1) - time.mktime(time2))
-			record_list.append(item) # save the record to list
-		else:
+			record_list.append(item.split()) # save the record to list
+		else: # this works even jump to many days
 			next_day = time.mktime(time1) # float number
 			
 			eod_time = time.ctime(next_day).split() #convert to readable time
@@ -53,4 +62,6 @@ if __name__ == '__main__':
 					new_day[12] = '23:59:59'
 					new_day[13] = new_time[4]
 				record_list.append(new_day)
+	
+	cal_daily_usage('rchan',login_rec)
 

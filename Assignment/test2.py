@@ -41,6 +41,7 @@ if __name__ == '__main__':
 				new_day[6] = '00:00:00'
 				new_day[7] = new_time[4]
 				day1 = time.strftime('%j',time.localtime(next_day))
+				print(new_time)
 
 				if day1 != day2: # check if next day is on the same day with end day or not
 					new_day[9] = new_time[0]
@@ -49,6 +50,9 @@ if __name__ == '__main__':
 					new_day[12] = '23:59:59'
 					new_day[13] = new_time[4]
 				record_list.append(new_day)
+				
+				
+				
 
-			print(record_list)
+	print(record_list)
 
