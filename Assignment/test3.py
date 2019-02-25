@@ -7,8 +7,9 @@ def read_login_rec(filelist):
 if __name__ == '__main__':
 	import time
 	
-	filelist = 'usage_data_file'
-	test = read_login_rec(filelist)
-	l = []
-	print(test)
-
+	filelist = 'test_data'
+	login_rec = read_login_rec(filelist)
+	total = 0
+	record_list = []
+	for item in login_rec:
+		print(item.split())
