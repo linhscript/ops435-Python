@@ -98,8 +98,26 @@ def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
     generate monthly usage report fro the given
     subject (user or remote host)'''
-    [ put your python code for this function here ]
-    return monthly_usage
+    text = "Monthly Usage Report for "
+    l = len(text+str(subject))
+    print(text+str(subject))
+    print(l*'=')
+    print("Month"+" "*(l//2)+"Usage in Seconds")
+    total = 0
+    monthly_usage = {}
+    for value in login_recs:
+        if subject in value:
+            time_usage = int(time.mktime(time.strptime(' '.join(value[9:14]))) - time.mktime(time.strptime(' '.join(value[3:8]))))
+            time_format = time.strftime('%Y %m',time.strptime(' '.join(value[9:14])))
+            try:
+                monthly_usage[time_format] += time_usage
+            except:
+                monthly_usage[time_format] = time_usage
+            total += time_usage
+
+    for key in sorted(monthly_usage.keys(),reverse=True):
+        print(str(key) +" "*(l//2)+ str(monthly_usage[key]))
+    print("Total" +" "*(l//2),total)
      
 if __name__ == '__main__':
     import argparse
