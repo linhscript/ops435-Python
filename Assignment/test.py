@@ -176,15 +176,16 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--type', choices = ['daily','weekly','monthly']
         ,help='type of report: daily, weekly, and monthly')
     parser.add_argument('-u', '--user' ,help='usage report for the given user name')
-    parser.add_argument('-v', '--verbose',metavar='',action='store_true',help='tune on output verbosity')
+    parser.add_argument('-v', '--verbose',action='store_true',help='tune on output verbosity')
     args = parser.parse_args()
 
 ###################################################################
     login_rec = []
+    args.filename = 'usage_data_file'
     for file in args.filename:
         login_rec.extend(read_login_rec(file))
 
-	if args.verbose:
+	#if args.verbose:
 
     if args.list:
         if args.list == 'user':
@@ -210,6 +211,7 @@ if __name__ == '__main__':
         else:
             cal_monthly_usage(subject,record_list)
 
+    cal_daily_usage('rchan',record_list)
 '''
 Files to be processed: ['a2_test_data_0']
 Type of args for files <class 'list'>
