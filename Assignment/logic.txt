@@ -28,3 +28,15 @@ record_list
 ['mshana', 'pts/13', '10.40.91.247', 'Tue', 'Feb', '13', '16:07:52', '2018', '-', 'Tue', 'Feb', '13', '16:45:52', '2018', '(00:38)'], 
 ['asmith', 'pts/11', '10.40.105.130', 'Tue', 'Feb', '13', '14:07:43', '2018', '-', 'Tue', 'Feb', '13', '16:07:43', '2018', '(02:00)']]
 
+
+Daily Usage Report for rchan
+============================
+Date          Usage in Seconds
+2018 02 13        1580
+Total             1580
+
+Weekly Usage Report for rchan
+=============================
+Week #        Usage in Seconds
+2018 07           1580
+Total             1580
