@@ -18,7 +18,14 @@ def get_login_rec():
     get records from the last command
     filter out the unwanted records
     add filtered record to list (login_recs)'''
-    [ put your python code for this function here ]
+    cmd = "last -Fiw"
+    p = os.popen(cmd)  
+    result = p.readlines()
+    p.close() 
+    login_recs = []
+    for item in result:
+        if len(item.split()) == 15: 
+            login_recs.append(item)
     return login_recs
  
 def read_login_rec(filelist):

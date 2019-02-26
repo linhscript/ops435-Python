@@ -1,3 +1,11 @@
+def get_login_rec():
+    ''' docstring for this fucntion
+    get records from the last command
+    filter out the unwanted records
+    add filtered record to list (login_recs)'''
+    [ put your python code for this function here ]
+    return login_recs
+
 def read_login_rec(filelist):
 
 	f = open(filelist,'r')
