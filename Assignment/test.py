@@ -184,7 +184,7 @@ if __name__ == '__main__':
     for file in args.filename:
         login_rec.extend(read_login_rec(file))
 
-	if args.verbose
+	if args.verbose:
 
     if args.list:
         if args.list == 'user':
