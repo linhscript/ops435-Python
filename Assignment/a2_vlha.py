@@ -199,8 +199,8 @@ if __name__ == '__main__':
                     record_list.append(new_day)
 
         if args.type == 'daily':
-            cal_daily_usage(subject,records_list)
+            cal_daily_usage(subject,record_list)
         elif args.type == 'weekly':
-            cal_weekly_usage(subject,records_list)
+            cal_weekly_usage(subject,record_list)
         else:
-            cal_monthly_usage(subject,records_list)
+            cal_monthly_usage(subject,record_list)
