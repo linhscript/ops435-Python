@@ -3,7 +3,7 @@
    authorship declaration
 
    __author__ Linh Van Ha
-   __date__ Feb 2019
+   __date__ 25 Feb 2019
    __version__ 1.0
  
    text to describe the purpose of this script
