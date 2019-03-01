@@ -19,9 +19,6 @@ import time
 import argparse
 
 
-
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Class Cancellation Notification System",
      epilog = "Copyright 2018 - Linh Van Ha")
@@ -34,5 +31,7 @@ if __name__ == '__main__':
         ,help='type of notification data: table -> html table, text-> plain text file')
     args = parser.parse_args()
 
+    
+    
     
 
