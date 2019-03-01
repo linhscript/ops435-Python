@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 '''
-   authorship declaration
-
-   __author__ Linh Van Ha
-   __date__ 25 Feb 2019
-   __version__ 1.0
- 
-   text to describe the purpose of this script
+OPS435 Assignment 2 - Winter 2018
+Program: ur_vlha.py
+Author: "Van Linh Ha"
+The python code in this file ur_vlha.py is original work written by
+"Van Linh Ha". No code in this file is copied from any other source 
+including any person, textbook, or on-line resource except those provided
+by the course instructor. I have not shared this python file with anyone
+or anything except for submission for grading.  
+I understand that the Academic Honesty Policy will be enforced and violators 
+will be reported and appropriate action will be taken.
 '''
 
 import os 
