@@ -2,12 +2,7 @@
 if __name__ == '__main__':
 	import time
 	import os
-	cmd = "last -Fiw"
-	p = os.popen(cmd)  
-	result = p.readlines()
-	p.close() 
-	login_recs = []
-	for item in result:
-		if len(item.split()) == 15: 
-			login_recs.append(item)
-	print(login_recs)
+	f = open('OPS435 Python A3 CCN Subscription - CDOT Wiki.html','r',encoding="utf8")
+	data = f.readlines()
+	f.close()
+	print(data[0])
