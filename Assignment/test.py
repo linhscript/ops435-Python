@@ -100,7 +100,7 @@ def cal_daily_usage(subject,login_recs):
     text = "Daily Usage Report for "
     l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
+    print(len(text+str(subject))*'=')
     print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
     total = 0
     daily_usage = {}

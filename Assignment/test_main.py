@@ -98,10 +98,9 @@ def cal_daily_usage(subject,login_recs):
     generate daily usage report for the given 
     subject (user or remote host)'''
     text = "Daily Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
-    print("Date"+" "*(l//2)+"Usage in Seconds")
+    print(len(text+str(subject))*'=')
+    print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
     total = 0
     daily_usage = {}
     for value in login_recs:
@@ -123,10 +122,9 @@ def cal_weekly_usage(subject,login_recs):
     generate weekly usage report for the given 
     subject (user or remote host)'''
     text = "Weekly Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
-    print("Week #"+" "*(l//2)+"Usage in Seconds")
+    print(len(text+str(subject))*'=')
+    print("{:<14s}{:>14s}".format("Week #","Usage in Seconds"))
     total = 0
     weekly_usage = {}
     for value in login_recs:
@@ -148,10 +146,9 @@ def cal_monthly_usage(subject,login_recs):
     generate monthly usage report fro the given
     subject (user or remote host)'''
     text = "Monthly Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
-    print("Month"+" "*(l//2)+"Usage in Seconds")
+    print(len(text+str(subject))*'=')
+    print("{:<14s}{:>14s}".format("Month","Usage in Seconds"))
     total = 0
     monthly_usage = {}
     for value in login_recs:
