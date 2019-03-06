@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 '''
-OPS435 Assignment 1 - Fall 2018
-Program: [vlha].py (replace vlha with your Seneca User name)
-Author: "Linh Van Ha"
-The python code in this file ([vlha.py) is original work written by
+OPS435 Assignment 1 - Winter 2019
+Program: vlha.py
+Author: Linh Van Ha
+The python code in this file vlha.py is original work written by
 "Linh Van Ha". No code in this file is copied from any other source 
 except those provided by the course instructor, including any person, 
 textbook, or on-line resource. I have not shared this python script 
@@ -14,14 +14,15 @@ violators will be reported and appropriate action will be taken.
 import sys
 
 
-def usage ():
+def usage():
 	'''
-	The usage() function will check if user input how many argument.
-	If user type the number of argument diffrent than 3 or 4, it will return the guidance how to user the command properly
+	The usage() function will check how many arguments user type in
+	If the number of arguments is diffrent than 3 or 4, 
+	it will output the properly usage of the script  
 	'''
 
 	if ((len(sys.argv) != 4) and len(sys.argv) != 3): 
-		print (sys.argv[0] + ' [--step]' +' YYYYMMDD' + ' -/+')
+		print (sys.argv[0] + ' [--step] YYYYMMDD +/-n')
 		exit()
 
 
@@ -38,11 +39,11 @@ def dbda(var1,var2):
 	if len(str(var2)) == 8:
 		validate(var2)
 		if var1 < var2:
-			while result < var2:  # Plus one day until i not less than thw 
+			while result < var2:  
 				total +=1
 				result = tomorrow(result)
 		elif var1 > var2:
-			while result > var2:  # Plus one day until i not less than thw 
+			while result > var2:  
 				total +=1
 				result = yesterday(result)
 		print(total) 	
@@ -77,7 +78,7 @@ def dbda(var1,var2):
 
 def leap_year(year_value):
 	'''
-	The leapyear() function will take a year in "YYYY" format, 
+	The leap_year() function will take a year in "YYYY" format, 
 	and return True if the given year is a leap year, otherwise return False.
 	'''
 	if (year_value % 4 == 0):
@@ -93,7 +94,10 @@ def leap_year(year_value):
     		
 	return is_leapyear
 
-def day_in_month(year_value):
+def days_in_mon(year_value):
+	'''
+	days_in_mon() function
+	'''
 	if leap_year(year_value):
 		feb = 29
 	else:
@@ -102,9 +106,9 @@ def day_in_month(year_value):
 	mon_max = { 1:31, 2:feb, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
 	return mon_max
 
-def validate(var1):
+def valid_date(var1):
 	'''
-	The validdate() function will take a date in "YYYYMMDD" format, 
+	The valid_date() function will take a date in "YYYYMMDD" format, 
 	and return True if the given date is a valid date, otherwise return False.
 	'''
 	if (len(var1) != 8):   # Check date format
@@ -114,7 +118,7 @@ def validate(var1):
 		year = int(var1[0:4])
 		month = int(var1[4:6])
 		day = int(var1[6:])
-		mon_max = day_in_month(year)
+		mon_max = days_in_mon(year)
 
 	    # Check month and day are valid or not
 		if month not in mon_max.keys():
@@ -136,7 +140,7 @@ def tomorrow(var1):
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-	mon_max = day_in_month(year)
+	mon_max = days_in_mon(year)
 	tmr_day = day + 1
 	
 	if tmr_day > mon_max[month]: 
@@ -158,7 +162,7 @@ def yesterday(var1):
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
-	mon_max = day_in_month(year)
+	mon_max = days_in_mon(year)
 	yst_day = day - 1
 	if yst_day == 0:
 		month = month - 1
