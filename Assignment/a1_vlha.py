@@ -49,7 +49,7 @@ def dbda(var1,var2):
 	total = 0
 	result = var1
 	if len(str(var2)) == 8:
-		validate(var2)
+		valid_date(var2)
 		if var1 < var2:
 			while result < var2:  
 				total +=1
@@ -155,7 +155,7 @@ def tomorrow(var1):
 	The tomorrow() function will take a date in "YYYYMMDD" format and return the date of the next day in the same format.
 	Next paragraph is a sample python code for the tomorrow() function.
 	'''
-	validate(var1)
+	valid_date(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
@@ -177,7 +177,7 @@ def yesterday(var1):
 	The yesterday() function will take a date in "YYYYMMDD" format 
 	and return the date of the previous day in the same format.
 	'''
-	validate(var1)
+	valid_date(var1)
 	year = int(var1[0:4])
 	month = int(var1[4:6])
 	day = int(var1[6:])
