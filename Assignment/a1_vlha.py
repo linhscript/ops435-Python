@@ -29,9 +29,21 @@ def usage():
 
 def dbda(var1,var2):
 	'''
-	The dbda() function will take a date in "YYYYMMDD" format,
-	a positive or negative integer, and return a date either before 
-	or after the given date according to the value of the given integer in the same format.
+	The dbda() function will take a date in "YYYYMMDD" format and a positive or negative integer.
+	The function will calculate the days need to add or subtract and return the date 
+
+	Examples:
+	dbda(20190101, 15)
+	20190116
+
+	dbda(20190101, 20180101)
+	365
+
+	dbda(20190101,3)
+	
+	20190102
+	20190103
+	20190104
 	'''
 	i = 0
 	total = 0
@@ -49,8 +61,8 @@ def dbda(var1,var2):
 		print(total) 	
 
 	else:	
-		if int(var2) > 0: # When var2 is positive (calculate day forward)
-			while i < int(var2):  # Plus one day until i not less than thw 
+		if int(var2) > 0: 
+			while i < int(var2):  
 				i += 1
 				if sys.argv[1] == '--step':
 					result = tomorrow(result)
@@ -59,7 +71,7 @@ def dbda(var1,var2):
 					result = tomorrow(result)				
 
 				
-		elif int(var2) < 0:  # When var2 is negative (calculate day backward)
+		elif int(var2) < 0:  
 			while i > int(var2):
 				i = i - 1
 				if sys.argv[1] == '--step':
@@ -80,6 +92,13 @@ def leap_year(year_value):
 	'''
 	The leap_year() function will take a year in "YYYY" format, 
 	and return True if the given year is a leap year, otherwise return False.
+
+	Examples:
+	leap_year(2018)
+	False
+
+	leap_year(2020)
+	True
 	'''
 	if (year_value % 4 == 0):
 		if (year_value % 100 == 0):
@@ -96,7 +115,8 @@ def leap_year(year_value):
 
 def days_in_mon(year_value):
 	'''
-	days_in_mon() function
+	days_in_mon() function will take given year and calculate the maximum days of each month
+	It will return the dictionary which contains all the months with its maximum days.
 	'''
 	if leap_year(year_value):
 		feb = 29
@@ -120,13 +140,12 @@ def valid_date(var1):
 		day = int(var1[6:])
 		mon_max = days_in_mon(year)
 
-	    # Check month and day are valid or not
 		if month not in mon_max.keys():
 			print("Error: wrong month entered")
 			exit()
 		else:
 			day_max = mon_max[month]
-			if day not in range (1,day_max+1):    ### Plus 1 to take the last value
+			if day not in range (1,day_max+1):    
 				print("Error: wrong day entered")
 				exit()
 
