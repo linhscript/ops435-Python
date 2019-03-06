@@ -101,7 +101,7 @@ def cal_daily_usage(subject,login_recs):
     l = len(text+str(subject))
     print(text+str(subject))
     print(l*'=')
-    print("Date"+" "*(l//2)+"Usage in Seconds")
+    print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
     total = 0
     daily_usage = {}
     for value in login_recs:
@@ -115,9 +115,10 @@ def cal_daily_usage(subject,login_recs):
             total += time_usage
 
     for key in sorted(daily_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(daily_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return daily_usage
+        #print(str(key) +" "*(l//2)+ str(daily_usage[key]))
+        print ("{:<11s}{:>11d}".format(str(key),daily_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
+    #return daily_usage
     
 def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function

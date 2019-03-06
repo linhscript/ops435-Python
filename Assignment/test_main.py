@@ -115,9 +115,8 @@ def cal_daily_usage(subject,login_recs):
             total += time_usage
 
     for key in sorted(daily_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(daily_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return daily_usage
+        print ("{:<11s}{:>11d}".format(str(key),daily_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
     
 def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function
@@ -141,9 +140,8 @@ def cal_weekly_usage(subject,login_recs):
             total += time_usage
 
     for key in sorted(weekly_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(weekly_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return weekly_usage
+        print ("{:<11s}{:>11d}".format(str(key),weekly_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
 
 def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
@@ -167,9 +165,9 @@ def cal_monthly_usage(subject,login_recs):
             total += time_usage
 
     for key in sorted(monthly_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(monthly_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return monthly_usage
+        print ("{:<11s}{:>11d}".format(str(key),monthly_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
      epilog = "Copyright 2018 - Linh Van Ha")
