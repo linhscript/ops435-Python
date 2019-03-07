@@ -35,9 +35,9 @@ def get_login_rec():
 def read_login_rec(filelist):
 
     f = open(filelist,'r')
-    login_rec = f.readlines()
+    login_recs = f.readlines()
     f.close()
-    return login_rec
+    return login_recs
 
 def get_list (list_record,position):
     res_list = set()
@@ -180,19 +180,19 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
 ###################################################################
-    login_rec = []
+    unformatted_login_rec = []
     if args.filename == "empty":
-        login_rec.extend(get_login_rec())
+        unformatted_login_rec.extend(get_login_rec())
     else:
         for file in args.filename:
-            login_rec.extend(read_login_rec(file))
+            unformatted_login_rec.extend(read_login_rec(file))
 
     if args.list:
         if args.list == 'user':
             number = 0
         else:
             number = 2
-        get_list(login_rec,number)
+        get_list(unformatted_login_rec,number)
     
 
 ###################################################################
@@ -203,7 +203,7 @@ if __name__ == '__main__':
         subject = args.user
 
     if args.type:
-        record_list = format_record(login_rec)
+        record_list = format_record(unformatted_login_rec)
         if args.type == 'daily':
             cal_daily_usage(subject,record_list)
         elif args.type == 'weekly':
