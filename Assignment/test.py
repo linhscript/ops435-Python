@@ -190,7 +190,7 @@ if __name__ == '__main__':
 
 ###################################################################
     login_rec = []
-    if args.filelist == "empty"
+    if args.filelist == "empty":
         login_rec.append(get_login_rec())
     else:
         for file in args.filename:
