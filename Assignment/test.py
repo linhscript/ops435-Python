@@ -191,7 +191,7 @@ if __name__ == '__main__':
 ###################################################################
     login_rec = []
     if args.filename == "empty":
-        login_rec.append(get_login_rec())
+        login_rec.extend(get_login_rec())
     else:
         for file in args.filename:
             login_rec.extend(read_login_rec(file))
