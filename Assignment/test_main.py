@@ -169,7 +169,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
      epilog = "Copyright 2018 - Linh Van Ha")
 
-    parser.add_argument('filename',metavar = 'F', nargs='*',help='list of files to be processed')
+    parser.add_argument('filename',metavar = 'F', nargs='*',default='empty',help='list of files to be processed')
     parser.add_argument('-l', '--list', choices = ['user','host']
         ,help='generate user name or remote host IP from the given files')
     parser.add_argument('-r', '--rhost', help='usage report for the given remote host IP')
@@ -181,8 +181,11 @@ if __name__ == '__main__':
 
 ###################################################################
     login_rec = []
-    for file in args.filename:
-        login_rec.extend(read_login_rec(file))
+    if args.filename == "empty":
+        login_rec.extend(get_login_rec())
+    else:
+        for file in args.filename:
+            login_rec.extend(read_login_rec(file))
 
     if args.list:
         if args.list == 'user':
