@@ -182,7 +182,7 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--type', choices = ['daily','weekly','monthly']
         ,help='type of report: daily, weekly, and monthly')
     parser.add_argument('-u', '--user' ,help='usage report for the given user name')
-    parser.add_argument('-v', '--verbose',metavar='',help='tune on output verbosity')
+    parser.add_argument('-v', '--verbose',action="store_true",help='tune on output verbosity')
     args = parser.parse_args()
 
 
@@ -197,13 +197,13 @@ if __name__ == '__main__':
             login_rec.extend(read_login_rec(file))
 
 
-    #args.filename = 'a2_test_data_2'
-    #f = open(args.filename,'r')
-    #s = f.readlines()
-    #f.close()
+    args.filename = 'a2_test_data_2'
+    f = open(args.filename,'r')
+    s = f.readlines()
+    f.close()
 
-    #record = format_record(s)
-    #cal_daily_usage('user5',record)
+    record = format_record(s)
+    cal_daily_usage('user5',record)
 
     if args.list:
         if args.list == 'user':
@@ -219,6 +219,8 @@ if __name__ == '__main__':
         subject = args.rhost
     elif args.user:
         subject = args.user
+
+    if args.verbose:
 
     if args.type:
         record_list = format_record(login_rec)
