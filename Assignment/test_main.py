@@ -39,8 +39,8 @@ def read_login_rec(filelist):
     f.close()
     return login_recs
 
-def get_list (list_record,position,option):
-    gen_text(option)
+def get_list (list_record,position):
+    gen_text()
     res_list = set()
     for item in list_record:
         res_list.add(item.split()[position])
@@ -94,11 +94,11 @@ def format_record(unformat_record):
                 record_list.append(new_day)
     return record_list
 
-def cal_daily_usage(subject,login_recs,option):
+def cal_daily_usage(subject,login_recs):
     ''' docstring for this function
     generate daily usage report for the given 
     subject (user or remote host)'''
-    gen_text(option)
+    gen_text()
     text = "Daily Usage Report for "
     print(text+str(subject))
     print(len(text+str(subject))*'=')
@@ -119,11 +119,11 @@ def cal_daily_usage(subject,login_recs,option):
         print ("{:<11s}{:>11d}".format(str(key),daily_usage[key]))
     print("{:<11s}{:>11d}".format("Total",total))
     
-def cal_weekly_usage(subject,login_recs,option):
+def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function
     generate weekly usage report for the given 
     subject (user or remote host)'''
-    gen_text(option)
+    gen_text()
     text = "Weekly Usage Report for "
     print(text+str(subject))
     print(len(text+str(subject))*'=')
@@ -144,11 +144,11 @@ def cal_weekly_usage(subject,login_recs,option):
         print ("{:<11s}{:>11d}".format(str(key),weekly_usage[key]))
     print("{:<11s}{:>11d}".format("Total",total))
 
-def cal_monthly_usage(subject,login_recs,option):
+def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
     generate monthly usage report fro the given
     subject (user or remote host)'''
-    gen_text(option)
+    gen_text()
     text = "Monthly Usage Report for "
     print(text+str(subject))
     print(len(text+str(subject))*'=')
@@ -169,8 +169,8 @@ def cal_monthly_usage(subject,login_recs,option):
         print ("{:<11s}{:>11d}".format(str(key),monthly_usage[key]))
     print("{:<11s}{:>11d}".format("Total",total))
 
-def gen_text(option):
-    if option == True:
+def gen_text():
+    if args.verbose:
         print("Files to be processed:",args.filename)
         print("Type of args for files",type(args.filename))
 
@@ -206,17 +206,12 @@ if __name__ == '__main__':
         for file in args.filename:
             unformatted_login_rec.extend(read_login_rec(file))
 
-    if args.verbose:
-        option = True
-    else:
-        option = False
-
     if args.list:
         if args.list == 'user':
             position = 0
         else:
             position = 2
-        get_list(unformatted_login_rec,position,option)
+        get_list(unformatted_login_rec,position)
     
     else:
         if args.rhost:
@@ -227,8 +222,8 @@ if __name__ == '__main__':
         if args.type:
             record_list = format_record(unformatted_login_rec)
             if args.type == 'daily':
-                cal_daily_usage(subject,record_list,option)
+                cal_daily_usage(subject,record_list)
             elif args.type == 'weekly':
-                cal_weekly_usage(subject,record_list,option)
+                cal_weekly_usage(subject,record_list)
             else:
-                cal_monthly_usage(subject,record_list,option)
+                cal_monthly_usage(subject,record_list)

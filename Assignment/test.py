@@ -206,11 +206,6 @@ if __name__ == '__main__':
         for file in args.filename:
             unformatted_login_rec.extend(read_login_rec(file))
 
-    if args.verbose:
-        option = True
-    else:
-        option = False
-
     if args.list:
         if args.list == 'user':
             position = 0
