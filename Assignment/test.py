@@ -221,6 +221,7 @@ if __name__ == '__main__':
         subject = args.user
 
     if args.verbose:
+        print ("Okay")
 
     if args.type:
         record_list = format_record(login_rec)
