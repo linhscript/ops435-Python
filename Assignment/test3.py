@@ -16,6 +16,7 @@ Generating list for host
 
 '''
 def gen_text():
+	print("Files to be processed: ",args.filename)
 	print("line1\nType of args for files <class 'list'>")
 
 if __name__ == '__main__':

@@ -176,7 +176,7 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--type', choices = ['daily','weekly','monthly']
         ,help='type of report: daily, weekly, and monthly')
     parser.add_argument('-u', '--user' ,help='usage report for the given user name')
-    parser.add_argument('-v', '--verbose',metavar='',help='tune on output verbosity')
+    parser.add_argument('-v', '--verbose',action="store_true",help='tune on output verbosity')
     args = parser.parse_args()
 
 ###################################################################
