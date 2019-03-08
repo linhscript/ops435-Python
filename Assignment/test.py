@@ -35,11 +35,12 @@ def get_login_rec():
 def read_login_rec(filelist):
 
     f = open(filelist,'r')
-    login_rec = f.readlines()
+    login_recs = f.readlines()
     f.close()
-    return login_rec
+    return login_recs
 
-def get_list (list_record,position):
+def get_list (list_record,position,option):
+    gen_text(option)
     res_list = set()
     for item in list_record:
         res_list.add(item.split()[position])
@@ -97,8 +98,8 @@ def cal_daily_usage(subject,login_recs,option):
     ''' docstring for this function
     generate daily usage report for the given 
     subject (user or remote host)'''
+    gen_text(option)
     text = "Daily Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
     print(len(text+str(subject))*'=')
     print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
@@ -115,20 +116,18 @@ def cal_daily_usage(subject,login_recs,option):
             total += time_usage
 
     for key in sorted(daily_usage.keys(),reverse=True):
-        #print(str(key) +" "*(l//2)+ str(daily_usage[key]))
         print ("{:<11s}{:>11d}".format(str(key),daily_usage[key]))
     print("{:<11s}{:>11d}".format("Total",total))
-    #return daily_usage
     
 def cal_weekly_usage(subject,login_recs,option):
     ''' docstring for this function
     generate weekly usage report for the given 
     subject (user or remote host)'''
+    gen_text(option)
     text = "Weekly Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
-    print("Week #"+" "*(l//2)+"Usage in Seconds")
+    print(len(text+str(subject))*'=')
+    print("{:<14s}{:>14s}".format("Week #","Usage in Seconds"))
     total = 0
     weekly_usage = {}
     for value in login_recs:
@@ -142,19 +141,18 @@ def cal_weekly_usage(subject,login_recs,option):
             total += time_usage
 
     for key in sorted(weekly_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(weekly_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return weekly_usage
+        print ("{:<11s}{:>11d}".format(str(key),weekly_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
 
 def cal_monthly_usage(subject,login_recs,option):
     ''' docstring for this function
     generate monthly usage report fro the given
     subject (user or remote host)'''
+    gen_text(option)
     text = "Monthly Usage Report for "
-    l = len(text+str(subject))
     print(text+str(subject))
-    print(l*'=')
-    print("Month"+" "*(l//2)+"Usage in Seconds")
+    print(len(text+str(subject))*'=')
+    print("{:<14s}{:>14s}".format("Month","Usage in Seconds"))
     total = 0
     monthly_usage = {}
     for value in login_recs:
@@ -168,9 +166,24 @@ def cal_monthly_usage(subject,login_recs,option):
             total += time_usage
 
     for key in sorted(monthly_usage.keys(),reverse=True):
-        print(str(key) +" "*(l//2)+ str(monthly_usage[key]))
-    print("Total" +" "*(l//2),total)
-    return monthly_usage
+        print ("{:<11s}{:>11d}".format(str(key),monthly_usage[key]))
+    print("{:<11s}{:>11d}".format("Total",total))
+
+def gen_text(option):
+    if option == True:
+        print("Files to be processed:",args.filename)
+        print("Type of args for files",type(args.filename))
+
+        if args.list:
+            print("processing usage report for the following:")
+            print("reading login/logout record files",args.filename)
+            print("Generating list for",args.list)
+        else:
+            print("usage report for user:",subject)
+            print("usage report type:",args.type)
+            print("processing usage report for the following:")
+            print("reading login/logout record files",args.filename)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
      epilog = "Copyright 2018 - Linh Van Ha")
@@ -185,62 +198,37 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose',action="store_true",help='tune on output verbosity')
     args = parser.parse_args()
 
-
-
-
 ###################################################################
-    login_rec = []
+    unformatted_login_rec = []
     if args.filename == "empty":
-        login_rec.extend(get_login_rec())
+        unformatted_login_rec.extend(get_login_rec())
     else:
         for file in args.filename:
-            login_rec.extend(read_login_rec(file))
+            unformatted_login_rec.extend(read_login_rec(file))
 
-
-    args.filename = 'a2_test_data_2'
-    f = open(args.filename,'r')
-    s = f.readlines()
-    f.close()
-
-    '''
-    Files to be processed: ['a2_test_data_2']
-    Type of args for files <class 'list'>
-    usage report for user: user5
-    usage report type: weekly
-    processing usage report for the following:
-    reading login/logout record files ['a2_test_data_2']
-    '''
-
-    option = False
-    record = format_record(s)
-    cal_daily_usage('user5',record,option)
+    if args.verbose:
+        option = True
+    else:
+        option = False
 
     if args.list:
         if args.list == 'user':
-            number = 0
+            position = 0
         else:
-            number = 2
-        get_list(login_rec,number)
+            position = 2
+        get_list(unformatted_login_rec,position,option)
     
-
-###################################################################
-
-    if args.rhost:
-        subject = args.rhost
-    elif args.user:
-        subject = args.user
-
-    if args.verbose:
-        option = 1
     else:
-        option = 0
+        if args.rhost:
+            subject = args.rhost
+        elif args.user:
+            subject = args.user
 
-    if args.type:
-        record_list = format_record(login_rec)
-        if args.type == 'daily':
-            cal_daily_usage(subject,record_list,option)
-        elif args.type == 'weekly':
-            cal_weekly_usage(subject,record_list,option)
-        else:
-            cal_monthly_usage(subject,record_list,option)
-
+        if args.type:
+            record_list = format_record(unformatted_login_rec)
+            if args.type == 'daily':
+                cal_daily_usage(subject,record_list,option)
+            elif args.type == 'weekly':
+                cal_weekly_usage(subject,record_list,option)
+            else:
+                cal_monthly_usage(subject,record_list,option)
