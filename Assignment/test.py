@@ -93,7 +93,7 @@ def format_record(unformat_record):
                 record_list.append(new_day)
     return record_list
 
-def cal_daily_usage(subject,login_recs):
+def cal_daily_usage(subject,login_recs,option):
     ''' docstring for this function
     generate daily usage report for the given 
     subject (user or remote host)'''
@@ -120,7 +120,7 @@ def cal_daily_usage(subject,login_recs):
     print("{:<11s}{:>11d}".format("Total",total))
     #return daily_usage
     
-def cal_weekly_usage(subject,login_recs):
+def cal_weekly_usage(subject,login_recs,option):
     ''' docstring for this function
     generate weekly usage report for the given 
     subject (user or remote host)'''
@@ -146,7 +146,7 @@ def cal_weekly_usage(subject,login_recs):
     print("Total" +" "*(l//2),total)
     return weekly_usage
 
-def cal_monthly_usage(subject,login_recs):
+def cal_monthly_usage(subject,login_recs,option):
     ''' docstring for this function
     generate monthly usage report fro the given
     subject (user or remote host)'''
@@ -202,8 +202,18 @@ if __name__ == '__main__':
     s = f.readlines()
     f.close()
 
+    '''
+    Files to be processed: ['a2_test_data_2']
+    Type of args for files <class 'list'>
+    usage report for user: user5
+    usage report type: weekly
+    processing usage report for the following:
+    reading login/logout record files ['a2_test_data_2']
+    '''
+
+    option = False
     record = format_record(s)
-    cal_daily_usage('user5',record)
+    cal_daily_usage('user5',record,option)
 
     if args.list:
         if args.list == 'user':
@@ -221,14 +231,16 @@ if __name__ == '__main__':
         subject = args.user
 
     if args.verbose:
-        print ("Okay")
+        option = 1
+    else:
+        option = 0
 
     if args.type:
         record_list = format_record(login_rec)
         if args.type == 'daily':
-            cal_daily_usage(subject,record_list)
+            cal_daily_usage(subject,record_list,option)
         elif args.type == 'weekly':
-            cal_weekly_usage(subject,record_list)
+            cal_weekly_usage(subject,record_list,option)
         else:
-            cal_monthly_usage(subject,record_list)
+            cal_monthly_usage(subject,record_list,option)
 
