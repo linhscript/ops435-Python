@@ -44,4 +44,8 @@ class BMWModel:
 # Store information about a specific car that someone owns.
 # Spend some time thinking why this class is different than the one above, and whether it has to be different:
 class Car:
+    def __init__(self,brand,owner):
+        self.brand = str(brand)
+        self.owner = str(owner)
+        self.info =
 	
