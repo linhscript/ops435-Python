@@ -47,5 +47,6 @@ class Car:
     def __init__(self,brand,owner):
         self.brand = str(brand)
         self.owner = str(owner)
-        self.info =
+    def info(self):
+        return "self.owner: self.brand"
 	
