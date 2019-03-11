@@ -19,6 +19,11 @@ import time
 import argparse
 
 
+
+cmd1 = grep td filename
+cmd2 =
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Class Cancellation Notification System",
      epilog = "Copyright 2018 - Linh Van Ha")
