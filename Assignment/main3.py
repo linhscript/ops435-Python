@@ -21,7 +21,7 @@ import argparse
 
 
 cmd1 = grep td filename
-cmd2 =
+cmd2 = sed  -i 's/<td>//g ;s/<\/td>//g'
 
 
 if __name__ == '__main__':
