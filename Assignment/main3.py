@@ -21,7 +21,8 @@ import argparse
 
 
 cmd1 = grep td filename
-cmd2 = sed  -i 's/<td>//g ;s/<\/td>//g'
+cmd2 = sed -i 's/<td>//g ;s/<\/td>//g' filename #remove td tag
+cmd3 = sed -i 's/.*>\(.*\)<\/a>/\1/'  filename1 #remove a tag
 
 
 if __name__ == '__main__':
