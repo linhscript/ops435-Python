@@ -24,6 +24,8 @@ cmd1 = grep td filename
 cmd2 = sed -i 's/<td>//g ;s/<\/td>//g' filename #remove td tag
 cmd3 = sed -i 's/.*>\(.*\)<\/a>/\1/'  filename1 #remove a tag
 
+cmd_oneline =  grep td OPS435 | sed 's/<td>//g ;s/<\/td>//g ; s/.*>\(.*\)<\/a>/\1/'
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Class Cancellation Notification System",
