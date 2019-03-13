@@ -17,16 +17,10 @@ import os
 import sys
 import time
 import argparse
+from bs4 import BeautifulSoup
 
 
 
-cmd1 = grep td filename
-cmd2 = sed -i 's/<td>//g ;s/<\/td>//g' filename #remove td tag
-cmd3 = sed -i 's/.*>\(.*\)<\/a>/\1/'  filename1 #remove a tag
-
-cmd_oneline =  grep td OPS435 | sed -E 's/(<td>|<\/td>)//g ; s/.*>\(.*\)<\/a>/\1/' | sed -r '/^\s*$/d'
-
-cmd_noti = sed -n '/<tr/,/<\/tr>/p'  ccn.html| sed  -E 's/(<td>|<\/td>)//g ;s/(<th>|<\/th>|<th.*)//g ; s/(<tr>|<\/tr>)//g ;s/Time|Room|Message//g ; s/<tr.*/line/g' | sed -r '/^\s*$/d'
 
 
 
