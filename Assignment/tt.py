@@ -6,10 +6,12 @@ print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
 
 
 if args.list:
-    return text.append(str(args.list).tilte() + " list for " + str(args.filename))
+    text.append(str(args.list).tilte() + " list for " + str(args.filename))
 
 elif args.type:
-    return text.append(str(args.type).tilte() + " Usage Report for " + str(args.filename))
+    text.append(str(args.type).tilte() + " Usage Report for " + str(args.subject))
+    text.append()
+
 
 User list for usage_data_file
 =============================
