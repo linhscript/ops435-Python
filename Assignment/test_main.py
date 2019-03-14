@@ -166,25 +166,30 @@ def cal_monthly_usage(subject,login_recs):
 
 def gen_text(): 
     text = []
-    text.append("Files to be processed: "+ str(args.filename))
-    text.append("Type of args for files "+ str(type(args.filename)))
 
-    if args.list: 
-        text.append("processing usage report for the following: ")
-        text.append("reading login/logout record files "+ str(args.filename))
-        text.append("Generating list for "+ str(args.list))
-    else: 
-        text.append("usage report for user: "+ str(subject))
-        text.append("usage report type: " + str(args.type))
-        text.append("processing usage report for the following: ")
-        text.append("reading login/logout record files "+ str(args.filename))
+
+
+
+    if args.verbose:
+        text.append("Files to be processed: "+ str(args.filename))
+        text.append("Type of args for files "+ str(type(args.filename)))
+
+        if args.list: 
+            text.append("processing usage report for the following: ")
+            text.append("reading login/logout record files "+ str(args.filename))
+            text.append("Generating list for "+ str(args.list))
+        else: 
+            text.append("usage report for user: "+ str(subject))
+            text.append("usage report type: " + str(args.type))
+            text.append("processing usage report for the following: ")
+            text.append("reading login/logout record files "+ str(args.filename))
     return text
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
      epilog = "Copyright 2018 - Linh Van Ha")
 
-    parser.add_argument('filename',metavar = 'F', nargs='*',help='list of files to be processed')
+    parser.add_argument('filename',metavar = 'F',required=True, nargs='*',help='list of files to be processed')
     parser.add_argument('-l', '--list', choices = ['user','host']
         ,help='generate user name or remote host IP from the given files')
     parser.add_argument('-r', '--rhost', help='usage report for the given remote host IP')
@@ -202,20 +207,21 @@ if __name__ == '__main__':
         for file in args.filename:
             unformatted_login_rec.extend(read_login_rec(file))
 
+
+    print(*gen_text(),sep="\n")
+
+
     if args.rhost:
         subject = args.rhost
     elif args.user:
         subject = args.user
-
-    if args.verbose:
-        print(*gen_text(),sep="\n")
 
     if args.list:
         if args.list == 'user':
             position = 0
         else:
             position = 2
-            print(*sorted(get_list(unformatted_login_rec,position)),sep = "\n")
+        print(*sorted(get_list(unformatted_login_rec,position)),sep = "\n")
     
     elif args.type:
         record_list = format_record(unformatted_login_rec)
