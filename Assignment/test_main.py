@@ -166,23 +166,18 @@ def cal_monthly_usage(subject,login_recs):
 
 def gen_text(): 
     text = []
+    text.append("Files to be processed: "+ str(args.filename))
+    text.append("Type of args for files "+ str(type(args.filename)))
 
-
-
-
-    if args.verbose:
-        text.append("Files to be processed: "+ str(args.filename))
-        text.append("Type of args for files "+ str(type(args.filename)))
-
-        if args.list: 
-            text.append("processing usage report for the following: ")
-            text.append("reading login/logout record files "+ str(args.filename))
-            text.append("Generating list for "+ str(args.list))
-        else: 
-            text.append("usage report for user: "+ str(subject))
-            text.append("usage report type: " + str(args.type))
-            text.append("processing usage report for the following: ")
-            text.append("reading login/logout record files "+ str(args.filename))
+    if args.list: 
+        text.append("processing usage report for the following: ")
+        text.append("reading login/logout record files "+ str(args.filename))
+        text.append("Generating list for "+ str(args.list))
+    else: 
+        text.append("usage report for user: "+ str(subject))
+        text.append("usage report type: " + str(args.type))
+        text.append("processing usage report for the following: ")
+        text.append("reading login/logout record files "+ str(args.filename))
     return text
 
 if __name__ == '__main__':
@@ -207,14 +202,13 @@ if __name__ == '__main__':
         for file in args.filename:
             unformatted_login_rec.extend(read_login_rec(file))
 
-
-    print(*gen_text(),sep="\n")
-
-
     if args.rhost:
         subject = args.rhost
     elif args.user:
         subject = args.user
+
+    if args.verbose:
+        print(*gen_text(),sep="\n")
 
     if args.list:
         if args.list == 'user':
