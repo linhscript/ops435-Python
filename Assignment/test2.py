@@ -28,4 +28,4 @@ if __name__ == '__main__':
     file1= "text1"
     file2 = "text2"
     file3 = "text3"
-    print(gen())
+    print(*gen(),sep="\n")
