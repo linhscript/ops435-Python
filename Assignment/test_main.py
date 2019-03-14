@@ -45,8 +45,6 @@ def get_list (list_record,position):
     for item in list_record:
         res_list.add(item.split()[position])
 
-    #for i in sorted(res_list):
-    #   print(i)
     print(*sorted(res_list),sep = "\n")
 
 def format_record(unformat_record):
@@ -170,6 +168,7 @@ def cal_monthly_usage(subject,login_recs):
     print("{:<11s}{:>11d}".format("Total",total))
 
 def gen_text():
+    text = []
     if args.verbose:
         print("Files to be processed:",args.filename)
         print("Type of args for files",type(args.filename))

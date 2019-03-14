@@ -1,22 +1,31 @@
+from typing import List, Any
+
 list1 = ['1','2','3']
 list2 = ['a','e','c','b','h']
 list3 = [1,2,3,4,5,6,7,8,'e','g','h']
+text = []
 
-tests = { 1:['20180101 1','20180102'],
-         2:['20180101 -1','20171231'],
-         3:['20180101 2','20180103'],
-         4:['--step 20180101 3','20180102\n20180103\n20180104\n'],
-         5:['20180701 500','20191113'],
-         6:['20189901 2','Error: wrong month entered'],
-         7:['20180199 2','Error: wrong day entered'],
-         8:['2018 2','Error: wrong date entered']
-        }
-#new_list = list(map((lambda x:x<5),list3))
 
 def gen():
-	return (sorted(list2))
-	#print(*sorted(list2),sep = "\n")
+    text = []
+    if 1 == 1:
+        text.append("Files to be processed: " + str(file1))
+        text.append("Files to be processed: " + str(file1))
+        text.append("Type of args for files " + str(file1))
+
+        if 1 == 1:
+            text.append("processing usage report for the following:")
+            text.append("reading login/logout record files " + str(file1))
+            text.append("Generating list for " + str(file1))
+        else:
+            text.append("usage report for user: " + str(file1))
+            text.append("usage report type: " + str(file1))
+            text.append("processing usage report for the following:")
+            text.append("reading login/logout record files " + str(file1))
+    return text
 
 if __name__ == '__main__':
-
-	print(gen())
+    file1= "text1"
+    file2 = "text2"
+    file3 = "text3"
+    print(gen())
