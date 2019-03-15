@@ -32,7 +32,10 @@ if __name__ == '__main__':
         print('A2 script file and run the this test run script again.')
         print('=' * 70)
         sys.exit()
-   
+
+   cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_data_2'
+   test_file = subprocess.run(cmd_file)
+
    print(preliminary_grading(student))
    print('=' * 40)
    doc_marks = {} # data dictionary for documentation mark
