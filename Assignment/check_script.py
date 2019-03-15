@@ -4,8 +4,10 @@ before submitting to blackboard by the students.
 Please note that this script does not check the docstring of the script 
 or its functions.
 
-Released by Raymond Chan on Oct 30, 2018
+Released by Van Linh Ha, March 15 2019
 '''
+
+# check if user already has data file or not, if not then download it.
 
 import types 
 import sys
