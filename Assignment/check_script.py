@@ -24,8 +24,8 @@ if __name__ == '__main__':
    else:
         student = sys.argv[1]
    
-   a1_script = 'a2_'+student+'.py'
-   if not os.path.isfile(a1_script):
+   a2_script = 'a2_'+student+'.py'
+   if not os.path.isfile(a2_script):
         print('=' * 70)
         print('Your A2 script file',a2_script,'is not in the current direcoty')
         print('Please copy this script to the directory that contains your')
@@ -51,7 +51,8 @@ if __name__ == '__main__':
    for test_no in range(1,len(tests)+1):
        cmd = 'python3 a1_'+student+'.py '+tests[test_no][0]
        print('Test run command',test_no,':',cmd)
- 
+       p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
+       result = p1.communicate()[0].decode('utf-8').strip('\n')
        expected = tests[test_no][1].strip('\n')
        if result == expected:
           print('--test passed--')
