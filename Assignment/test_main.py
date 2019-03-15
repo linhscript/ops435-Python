@@ -183,9 +183,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
 ###################################################################
+    print(args.filename)
     unformatted_login_rec = []
-    if args.filename == "last":
+    if "last" in args.filename:
         unformatted_login_rec.extend(get_login_rec())
+
     else:
         for file in args.filename:
             unformatted_login_rec.extend(read_login_rec(file))
