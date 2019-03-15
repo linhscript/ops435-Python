@@ -112,9 +112,7 @@ def cal_daily_usage(subject,login_recs):
                 daily_usage[time_format] = time_usage
             total += time_usage
 
-    for key in sorted(daily_usage.keys(),reverse=True):
-        print ("{:<11s}{:>11d}".format(str(key),daily_usage[key]))
-    print("{:<11s}{:>11d}".format("Total",total))
+    return daily_usage,total
     
 def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function
@@ -135,10 +133,7 @@ def cal_weekly_usage(subject,login_recs):
             except:
                 weekly_usage[time_format] = time_usage
             total += time_usage
-
-    for key in sorted(weekly_usage.keys(),reverse=True):
-        print ("{:<11s}{:>11d}".format(str(key),weekly_usage[key]))
-    print("{:<11s}{:>11d}".format("Total",total))
+    return weekly_usage,total
 
 def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
@@ -159,10 +154,15 @@ def cal_monthly_usage(subject,login_recs):
             except:
                 monthly_usage[time_format] = time_usage
             total += time_usage
+    return monthly_usage,total
 
-    for key in sorted(monthly_usage.keys(),reverse=True):
-        print ("{:<11s}{:>11d}".format(str(key),monthly_usage[key]))
-    print("{:<11s}{:>11d}".format("Total",total))
+def footer(calculation):
+    ft = []
+    records,total = calculation
+    for key in sorted(records.keys(),reverse=True):
+        ft.append("{:<11s}{:>11d}".format(str(key),records[key]))
+    ft.append("{:<11s}{:>11d}".format("Total",total))
+    return ft
 
 def gen_text(): 
     text = []
@@ -215,13 +215,14 @@ if __name__ == '__main__':
             position = 0
         else:
             position = 2
+        print(str(args.list).title() + " list for", str(args.filename))
         print(*sorted(get_list(unformatted_login_rec,position)),sep = "\n")
     
     elif args.type:
         record_list = format_record(unformatted_login_rec)
         if args.type == 'daily':
-            cal_daily_usage(subject,record_list)
+            print(*footer(cal_daily_usage(subject,record_list)),sep = "\n")
         elif args.type == 'weekly':
-            cal_weekly_usage(subject,record_list)
+            print(*footer(cal_weekly_usage(subject,record_list)),sep = "\n")
         else:
-            cal_monthly_usage(subject,record_list)
+            print(*footer(cal_monthly_usage(subject,record_list)),sep = "\n")
