@@ -33,7 +33,8 @@ def get_login_rec():
     return login_recs
  
 def read_login_rec(filelist):
-
+    '''
+    '''
     f = open(filelist,'r')
     login_recs = f.readlines()
     f.close()
@@ -45,7 +46,6 @@ def get_list (list_record,position):
     for item in list_record:
         res_list.add(item.split()[position])
     return res_list
-
 
 def format_record(unformat_record):
 
@@ -96,10 +96,6 @@ def cal_daily_usage(subject,login_recs):
     ''' docstring for this function
     generate daily usage report for the given 
     subject (user or remote host)'''
-    text = "Daily Usage Report for "
-    print(text+str(subject))
-    print(len(text+str(subject))*'=')
-    print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
     total = 0
     daily_usage = {}
     for value in login_recs:
@@ -118,10 +114,6 @@ def cal_weekly_usage(subject,login_recs):
     ''' docstring for this function
     generate weekly usage report for the given 
     subject (user or remote host)'''
-    text = "Weekly Usage Report for "
-    print(text+str(subject))
-    print(len(text+str(subject))*'=')
-    print("{:<14s}{:>14s}".format("Week #","Usage in Seconds"))
     total = 0
     weekly_usage = {}
     for value in login_recs:
@@ -139,10 +131,6 @@ def cal_monthly_usage(subject,login_recs):
     ''' docstring for this function
     generate monthly usage report fro the given
     subject (user or remote host)'''
-    text = "Monthly Usage Report for "
-    print(text+str(subject))
-    print(len(text+str(subject))*'=')
-    print("{:<14s}{:>14s}".format("Month","Usage in Seconds"))
     total = 0
     monthly_usage = {}
     for value in login_recs:
@@ -215,14 +203,20 @@ if __name__ == '__main__':
             position = 0
         else:
             position = 2
-        print(str(args.list).title() + " list for", str(args.filename))
+        print(str(args.list).title() + " list for", ' '.join(args.filename))
+        print(len(str(args.list).title() + " list for "+ ' '.join(args.filename))*'=')
         print(*sorted(get_list(unformatted_login_rec,position)),sep = "\n")
     
     elif args.type:
         record_list = format_record(unformatted_login_rec)
+        print(args.type.title() + " Usage Report for " + subject)
+        print(len(args.type.title() + " Usage Report for " + subject)*'=')
         if args.type == 'daily':
+            print("{:<14s}{:>14s}".format("Date","Usage in Seconds"))
             print(*content(cal_daily_usage(subject,record_list)),sep = "\n")
         elif args.type == 'weekly':
+            print("{:<14s}{:>14s}".format("Week #","Usage in Seconds"))
             print(*content(cal_weekly_usage(subject,record_list)),sep = "\n")
         else:
+            print("{:<14s}{:>14s}".format("Month","Usage in Seconds"))
             print(*content(cal_monthly_usage(subject,record_list)),sep = "\n")
