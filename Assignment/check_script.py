@@ -14,7 +14,7 @@ import subprocess
 
 
 def preliminary_grading(stud_name):
-    message = '\n== Preliminary A1 Test Run Report for '+stud_name+'==\nThe following is your preliminary test run report for assignment 1. Please review the report and fix all the possible errors before submitting your python script and document files to blackboard using the assignment 1 submission link which will be available on Monday, February 18, 2019.\n'
+    message = '\n== Preliminary A2 Test Run Report for '+stud_name+'==\nThe following is your preliminary test run report for assignment 2. Please review the report and fix all the possible errors before submitting your python script and document files to blackboard using the assignment 2 submission link which will be available on Monday, February 18, 2019.\n'
     return message
 
 
@@ -24,12 +24,12 @@ if __name__ == '__main__':
    else:
         student = sys.argv[1]
    
-   a1_script = 'a1_'+student+'.py'
+   a1_script = 'a2_'+student+'.py'
    if not os.path.isfile(a1_script):
         print('=' * 70)
-        print('Your A1 script file',a1_script,'is not in the current direcoty')
+        print('Your A2 script file',a2_script,'is not in the current direcoty')
         print('Please copy this script to the directory that contains your')
-        print('A1 script file and run the this test run script again.')
+        print('A2 script file and run the this test run script again.')
         print('=' * 70)
         sys.exit()
    
@@ -51,8 +51,7 @@ if __name__ == '__main__':
    for test_no in range(1,len(tests)+1):
        cmd = 'python3 a1_'+student+'.py '+tests[test_no][0]
        print('Test run command',test_no,':',cmd)
-       p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-       result = p1.communicate()[0].decode('utf-8').strip('\n')
+ 
        expected = tests[test_no][1].strip('\n')
        if result == expected:
           print('--test passed--')
