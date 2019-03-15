@@ -156,7 +156,7 @@ def cal_monthly_usage(subject,login_recs):
             total += time_usage
     return monthly_usage,total
 
-def footer(calculation):
+def content(calculation):
     ft = []
     records,total = calculation
     for key in sorted(records.keys(),reverse=True):
@@ -221,8 +221,8 @@ if __name__ == '__main__':
     elif args.type:
         record_list = format_record(unformatted_login_rec)
         if args.type == 'daily':
-            print(*footer(cal_daily_usage(subject,record_list)),sep = "\n")
+            print(*content(cal_daily_usage(subject,record_list)),sep = "\n")
         elif args.type == 'weekly':
-            print(*footer(cal_weekly_usage(subject,record_list)),sep = "\n")
+            print(*content(cal_weekly_usage(subject,record_list)),sep = "\n")
         else:
-            print(*footer(cal_monthly_usage(subject,record_list)),sep = "\n")
+            print(*content(cal_monthly_usage(subject,record_list)),sep = "\n")
