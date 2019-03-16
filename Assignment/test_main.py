@@ -18,10 +18,8 @@ import time
 import argparse
 
 def get_login_rec():
-    ''' docstring for this fucntion
-    get records from the last command
-    filter out the unwanted records
-    add filtered record to list (login_recs)'''
+    ''' get_login_rec function will read from the command if it has the word "last" then get the data from the system
+    , using last command and return the valid data to an unformatted list'''
     cmd = "last -Fiw"
     p = os.popen(cmd)  
     result = p.readlines()
@@ -34,6 +32,8 @@ def get_login_rec():
  
 def read_login_rec(filelist):
     '''
+    read_login_rec accepts one argument which is the log file name that will be given, it reads the file and return
+    an unformatted list
     '''
     f = open(filelist,'r')
     login_recs = f.readlines()
@@ -41,23 +41,32 @@ def read_login_rec(filelist):
     return login_recs
 
 def get_list (list_record,position):
-    
+    '''
+    get_list function accepts 2 agurment are formatted list record and the position of the column in the record. If position is 0,
+    it will take the first column in the list which is username. Otherwise, it will take third column values which is IP Address.
+    All the item will be put in the set in order to make every values are unique and not duplicated. After collecting all the values,
+    it will return a list of usernames or a list of IP Addresses
+    '''
     res_list = set()
     for item in list_record:
         res_list.add(item.split()[position])
     return res_list
 
 def format_record(unformat_record):
-
+    '''
+    format_record accepts one argument which can be parsed from get_login_record function or read_login_rec function. It reads a list of
+    unformatted records and convert all the records which have a different day of login and logout time, to the same day. Then return
+    a new list of records.
+    '''
     record_list = []
     for item in unformat_record:
-        time1 = time.strptime(' '.join(item.split()[3:8]),"%a %b %d %H:%M:%S %Y")
+        time1 = time.strptime(' '.join(item.split()[3:8]),"%a %b %d %H:%M:%S %Y") # Conver to struc_time
         time2 = time.strptime(' '.join(item.split()[9:14]),"%a %b %d %H:%M:%S %Y")
         # time1 and time2 is struct_time
         doy1 = time.strftime("%j",time1) # return day of year
         doy2 = time.strftime("%j",time2)
  
-        if doy1 == doy2: # if same day
+        if doy1 == doy2: # if same day in a year
             record_list.append(item.split()) # save the record to list
         else: # this works even jump to many days
             next_day = time.mktime(time1) # float number
@@ -93,9 +102,11 @@ def format_record(unformat_record):
     return record_list
 
 def cal_daily_usage(subject,login_recs):
-    ''' docstring for this function
-    generate daily usage report for the given 
-    subject (user or remote host)'''
+    ''' 
+    cal_daily_usage accepts 2 arguments. First argument can be username or ip address. Second argument is the list of formatted records
+    which get from function format_record. It collects all the records in the same day then sum all the total time. It will return 
+    a dictionary with the key is the date and the value is total time for each date, and the Total time of all the dates
+    '''
     total = 0
     daily_usage = {}
     for value in login_recs:
