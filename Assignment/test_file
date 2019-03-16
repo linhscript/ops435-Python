@@ -1,0 +1,11 @@
++ echo 
+Test data file
++ cat a2_test_data_2
+Hello
+1234
++ ./ur.py -h
+usage
+Copyright 2018 - Raymond Chan
++ ./ur.py -l user a2_test_data_2
+user1
+user2
