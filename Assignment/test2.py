@@ -5,4 +5,4 @@ num = []
 for item in l2:
 	num.append(item)
 	result[1] = num
-print(result)
+print(l2.pop(1))
