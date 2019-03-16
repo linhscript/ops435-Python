@@ -122,9 +122,10 @@ def cal_daily_usage(subject,login_recs):
     return daily_usage,total
     
 def cal_weekly_usage(subject,login_recs):
-    ''' docstring for this function
-    generate weekly usage report for the given 
-    subject (user or remote host)'''
+    ''' cal_daily_usage accepts 2 arguments. First argument can be username or ip address. Second argument is the list of formatted records
+    which get from function format_record. It collects all the records in the same weekday of the year then sum all the total time. It will return 
+    a dictionary with the key is the date and the value is total time for each date, and the Total time of all the dates
+    '''
     total = 0
     weekly_usage = {}
     for value in login_recs:
@@ -139,9 +140,10 @@ def cal_weekly_usage(subject,login_recs):
     return weekly_usage,total
 
 def cal_monthly_usage(subject,login_recs):
-    ''' docstring for this function
-    generate monthly usage report fro the given
-    subject (user or remote host)'''
+    ''' cal_daily_usage accepts 2 arguments. First argument can be username or ip address. Second argument is the list of formatted records
+    which get from function format_record. It collects all the records in the same month then sum all the total time. It will return 
+    a dictionary with the key is the date and the value is total time for each date, and the Total time of all the dates
+    '''
     total = 0
     monthly_usage = {}
     for value in login_recs:
@@ -156,6 +158,10 @@ def cal_monthly_usage(subject,login_recs):
     return monthly_usage,total
 
 def content(calculation):
+    '''
+    content function accepts one argument which is the result of the daily,weekly,monthly function. It gets dictionary and the total time
+    It sorts the key in the dictionary in reverse with text allignment and save it to the list.
+    '''
     ft = []
     records,total = calculation
     for key in sorted(records.keys(),reverse=True):
@@ -164,6 +170,10 @@ def content(calculation):
     return ft
 
 def gen_text(): 
+    '''
+    gen_text function will generate texts as an output whenever user run a commands in a different situation. It saves the texts into
+    a list
+    '''
     text = []
     text.append("Files to be processed: "+ str(args.filename))
     text.append("Type of args for files "+ str(type(args.filename)))
