@@ -184,9 +184,9 @@ def gen_text():
         text.append("Generating list for "+ str(args.list))
     else:
         if args.user: 
-                text.append("usage report for user: "+ str(subject))
+            text.append("usage report for user: "+ str(subject))
         else:
-                text.append("usage report for remote host: "+ str(subject))    
+            text.append("usage report for remote host: "+ str(subject))    
         text.append("usage report type: " + str(args.type))
         text.append("processing usage report for the following: ")
         text.append("reading login/logout record files "+ str(args.filename))
