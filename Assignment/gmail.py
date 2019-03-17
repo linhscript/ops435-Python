@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 email = 'havanlinh304@gmail.com'
-password = 'H@v@nl1nh'
+password = 'password'
 send_to_email = ['vlha@myseneca.ca','havanlinh304@gmail.com','havanlinh3494@gmail.com']
 subject = 'TEST MAIL multiple users'
 message = 'Here is a message from python.'
