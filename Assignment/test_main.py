@@ -207,7 +207,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
 ###################################################################
-    print(args.filename)
     unformatted_login_rec = []
     if "last" in args.filename:
         unformatted_login_rec.extend(get_login_rec())
