@@ -94,11 +94,11 @@ if __name__ == '__main__':
 
             num +=1
 
-    print('\nTest Results:\n',test_marks)
+    print('\nTest Results:',test_marks)
     total_test_marks = 0
     for item in test_marks:
         total_test_marks += test_marks[item] 
     total_test_marks = total_test_marks / 16 * 100 ## 17 commands to check
-    print('Total test run marks: ',total_test_marks)
+    print('\nTotal test run marks: ',total_test_marks)
     grand_total = round((total_test_marks + total_doc_marks),2)
-    print('Total marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
+    print('\nTotal marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
