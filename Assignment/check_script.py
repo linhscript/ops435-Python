@@ -65,7 +65,7 @@ if __name__ == '__main__':
     list_coms = []
     for item in data:
         if item.startswith('+'):
-            commands = item.replace('+ ','').strip()
+            commands = item.replace('+  ','').strip()
             list_coms = list_coms.copy()            
             list_coms.clear()  
         else:

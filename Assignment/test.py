@@ -18,13 +18,13 @@ if __name__ == '__main__':
             list_result = list_result.copy()            
             list_result.clear()  
         else:  
-            list_result.append(item)
+            list_result.append(item.rstrip())
             result[commands] = list_result
 
 
     print('\n'.join(result['+ ./ur.py -h']))
     # c = result["+ ./ur.py -u user5 -t daily a2_test_data_2 -v"]
-    cmd = 'python3.6 a2_vlha.py -h'
+    cmd = 'python a2_vlha.py -h'
     print('Test run command',':',cmd)
     p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
     result_fromcmd = p1.communicate()[0].decode('utf-8').strip('\n') 
@@ -32,5 +32,6 @@ if __name__ == '__main__':
     # print("")
     # print(test.split("\n"))
     # print(c == test.split("\n"))
-    print(result_fromcmd)
-
+    #print(result_fromcmd)
+    print(('\n'.join(result['+ ./ur.py -h'])) == result_fromcmd)
+    print(result['+ ./ur.py -h'])
