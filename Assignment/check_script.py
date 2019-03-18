@@ -63,7 +63,7 @@ if __name__ == '__main__':
             com_test.replace('./ur', student)
 
             cmd = 'python3.6 a2_'+student+'.py '+ com_test
-            print('Test run command',test_no,':',cmd)
+            print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
             result = p1.communicate()[0].decode('utf-8').strip('\n')  
             expected = test.split("\n")
