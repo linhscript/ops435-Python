@@ -97,7 +97,6 @@ if __name__ == '__main__':
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
                 test_marks[num] = 0
 
-                break
             num +=1
 
     print('Test Results:',test_marks)
