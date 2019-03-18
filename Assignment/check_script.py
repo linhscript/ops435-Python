@@ -14,6 +14,18 @@ import sys
 import os
 import subprocess
 
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
 
 def preliminary_grading(stud_name):
     message = '\n== Preliminary A2 Test Run Report for '+stud_name+'==\nThe following is your preliminary test run report for assignment 2. Please review the report and fix all the possible errors before submitting your python script and document files to blackboard using the assignment 2 submission link which will be available on Monday, February 18, 2019.\n'
@@ -74,9 +86,10 @@ if __name__ == '__main__':
             result = p1.communicate()[0].decode('utf-8').strip('\n')
               
             if result == expected:
-                print('--test passed--')
+                print(color.GREEN+'--test passed--'+color.END)
                 test_marks[num] = 1
             else:
+                for x in range(0,len(result)-1)
                 print('--test failed--')
                 print('---- expect:',expected)
                 print('----  given:',result)

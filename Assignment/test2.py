@@ -30,3 +30,5 @@ class color:
 print (color.BOLD + 'Hello World !' + color.END)
 
 print("\033[1;32;40m Bright Green  \n")
+
+print(len(l1))
