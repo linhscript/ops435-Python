@@ -72,7 +72,7 @@ if __name__ == '__main__':
             if item.endswith("Chan\n"):
                 item = item.replace('Raymond Chan',fullname)
             if item.startswith("usage"):
-                item = item.replace('ur',)            
+                item = item.replace('ur','a2_'+student)            
             list_coms.append(item.strip())
             tests[commands] = list_coms
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
             expected = '\n'.join(tests[com_test])
-            com_test = com_test.replace('./ur.py','a2_'+student)
+            com_test = com_test.replace('./ur.py','')
             cmd = 'python3.6 a2_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
@@ -108,8 +108,5 @@ if __name__ == '__main__':
     print('Total test run marks: ',total_test_marks)
     grand_total = round((total_test_marks + total_doc_marks),2)
     print('Total marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
-    a=expected.split('\n')
-    print(a)
-    print("")
-    b=result.split('\n')
-    print(b)
+
+ 
