@@ -179,7 +179,7 @@ def gen_text():
     text.append("Type of args for files "+ str(type(args.filename)))
 
     if args.list: 
-        text.append("processing usage report for the following: ")
+        text.append("processing usage report for the following:")
         text.append("reading login/logout record files "+ str(args.filename))
         text.append("Generating list for "+ str(args.list))
     else:
