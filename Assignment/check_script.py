@@ -89,7 +89,7 @@ if __name__ == '__main__':
                 print(color.GREEN,'--test passed--',color.END)
                 test_marks[num] = 1
             else:
-                for x in range(0,len(result)-1):
+                #for x in range(0,len(result)-1):
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',expected,color.END)
                 print(color.BLUE,color.UNDERLINE,'----  given:',result,,color.END)
