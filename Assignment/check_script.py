@@ -89,13 +89,12 @@ if __name__ == '__main__':
                 print(color.GREEN,'--test passed--',color.END)
                 test_marks[num] = 1
             else:
-                # for x in range(0,len(result)-1):
-                #     if result[x] != expected[x]:
-                #         print(result[x])
+                for x in range(0,len(result)-1):
+                    if result.split('\n')[x] != expected[x]:
+                        print(result.split('\n')[x])
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
-                print(type(result))
                 test_marks[num] = 0
                 break
 
