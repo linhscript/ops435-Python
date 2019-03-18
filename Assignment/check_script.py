@@ -73,7 +73,7 @@ if __name__ == '__main__':
                 item = item.replace('Raymond Chan',fullname)
             if item.startswith("usage"):
                 item = item.replace('ur','a2_'+student)            
-            list_coms.append(item)
+            list_coms.append(item.strip())
             tests[commands] = list_coms
 
     test_marks = {}
