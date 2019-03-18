@@ -35,8 +35,8 @@ if __name__ == '__main__':
         print('=' * 70)
         sys.exit()
 
-    if not os.path.isfile("a2_test_run_2_results"):
-        cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_run_2_results'
+    if not os.path.isfile("a2_test_run_2_results.txt"):
+        cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_run_2_results.txt'
         os.system(cmd_file)
 
     print(preliminary_grading(student))
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     doc_marks = {} # data dictionary for documentation mark
     total_doc_marks = 0
 
-    f = open('a2_test_run_2_results','r')
+    f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
     tests = {}
