@@ -32,3 +32,5 @@ if __name__ == '__main__':
     # print("")
     # print(test.split("\n"))
     # print(c == test.split("\n"))
+    print(result_fromcmd)
+
