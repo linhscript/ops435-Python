@@ -188,7 +188,7 @@ def gen_text():
         else:
             text.append("usage report for remote host: "+ str(subject))    
         text.append("usage report type: " + str(args.type))
-        text.append("processing usage report for the following: ")
+        text.append("processing usage report for the following:")
         text.append("reading login/logout record files "+ str(args.filename))
     return text
 
