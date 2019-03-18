@@ -194,7 +194,7 @@ def gen_text():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Usage Report based on the last command",
-     epilog = "Copyright 2019 - Linh Van Ha")
+     epilog = "Copyright 2018 - Linh Van Ha")
 
     parser.add_argument('filename',metavar = 'F', nargs='+',help='list of files to be processed')
     parser.add_argument('-l', '--list', choices = ['user','host']
