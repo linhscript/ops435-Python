@@ -66,7 +66,7 @@ if __name__ == '__main__':
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
             result = p1.communicate()[0].decode('utf-8').strip('\n')  
-            expected = result.split("\n")
+            expected = tests[com_test].split("\n")
             if result == expected:
                 print('--test passed--')
                 test_marks[com_test] = 1
