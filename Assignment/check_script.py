@@ -59,6 +59,7 @@ if __name__ == '__main__':
             tests[commands] = list_coms
 
     test_marks = {}
+    num = 1
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
             expected = '\n'.join(tests[com_test])
@@ -67,7 +68,7 @@ if __name__ == '__main__':
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
             result = p1.communicate()[0].decode('utf-8').strip('\n')
-            num = 1  
+              
             if result == expected:
                 print('--test passed--')
                 test_marks[num] = 1
