@@ -61,6 +61,7 @@ if __name__ == '__main__':
     f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
+    #  os.system("rm -rf a2_test_run_2_results.txt")
     tests = {}
     list_coms = []
     for item in data:
