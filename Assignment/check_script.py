@@ -72,7 +72,7 @@ if __name__ == '__main__':
         else:          
             list_coms.append(item.strip())
             tests[commands] = list_coms
-
+    del tests['./ur.py -h']
     test_marks = {}
     num = 1
     for com_test in tests.keys():
