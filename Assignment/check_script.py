@@ -96,7 +96,6 @@ if __name__ == '__main__':
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
                 test_marks[num] = 0
-
             num +=1
 
     print('Test Results:',test_marks)
