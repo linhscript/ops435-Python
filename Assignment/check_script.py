@@ -68,12 +68,8 @@ if __name__ == '__main__':
             commands = item.replace('+ ','').strip()
             list_coms = list_coms.copy()            
             list_coms.clear()  
-        else:
-            if item.endswith("Chan\n"):
-                item = item.replace('Raymond Chan',fullname)
-            if item.startswith("usage"):
-                item = item.replace('ur','a2_'+student)            
-            list_coms.append(item.rstrip())
+        else:          
+            list_coms.append(item.strip())
             tests[commands] = list_coms
 
     test_marks = {}
