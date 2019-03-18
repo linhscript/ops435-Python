@@ -6,7 +6,7 @@ import subprocess
 
 if __name__ == '__main__':
 
-    f = open('a2_test_run_2_results.txt','r')
+    f = open('test_file','r')
     data = f.readlines()
     f.close()
     result = {}
@@ -21,13 +21,13 @@ if __name__ == '__main__':
             result[commands] = list_result
 
 
-    #print(result)
-    c = result["+ ./ur.py -u user5 -t daily a2_test_data_2 -v"]
-    cmd = 'python3.6 a2_vlha.py -u user5 -t daily a2_test_data_2 -v'
-    #print('Test run command',test_no,':',cmd)
-    p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-    test = p1.communicate()[0].decode('utf-8').strip('\n')    
-    print(c)
-    print("")
-    print(test.split("\n"))
-    print(c == test.split("\n"))
+    print(result)
+    # c = result["+ ./ur.py -u user5 -t daily a2_test_data_2 -v"]
+    # cmd = 'python3.6 a2_vlha.py -u user5 -t daily a2_test_data_2 -v'
+    # #print('Test run command',test_no,':',cmd)
+    # p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
+    # test = p1.communicate()[0].decode('utf-8').strip('\n')    
+    # print(c)
+    # print("")
+    # print(test.split("\n"))
+    # print(c == test.split("\n"))
