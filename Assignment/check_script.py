@@ -92,7 +92,7 @@ if __name__ == '__main__':
                 #for x in range(0,len(result)-1):
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',expected,color.END)
-                print(color.BLUE,color.UNDERLINE,'----  given:',result,,color.END)
+                print(color.BLUE,color.UNDERLINE,'----  given:',result,color.END)
                 test_marks[num] = 0
             num +=1
 
