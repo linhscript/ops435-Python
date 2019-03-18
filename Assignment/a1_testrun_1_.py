@@ -49,7 +49,7 @@ if __name__ == '__main__':
             }
    test_marks = {}
    for test_no in range(1,len(tests)+1):
-       cmd = 'python3 a1_'+student+'.py '+tests[test_no][0]
+       cmd = 'python3.6 a1_'+student+'.py '+tests[test_no][0]
        print('Test run command',test_no,':',cmd)
        p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
        result = p1.communicate()[0].decode('utf-8').strip('\n')
