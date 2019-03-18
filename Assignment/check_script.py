@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
             num +=1
 
-    print('Test Results:',test_marks)
+    print('\nTest Results:\n',test_marks)
     total_test_marks = 0
     for item in test_marks:
         total_test_marks += test_marks[item] 
