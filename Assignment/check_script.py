@@ -33,12 +33,10 @@ def preliminary_grading(stud_name):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 2:
         student = input('Please enter your email user id:')
-        fullname = input('Please enter your FULL NAME:')
     else:
         student = sys.argv[1]
-        fullname = sys.argv[2]
    
     a2_script = 'a2_'+student+'.py'
     if not os.path.isfile(a2_script):
