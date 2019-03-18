@@ -5,7 +5,7 @@ import os
 
 if __name__ == '__main__':
 
-    f = open('a2_test_run_2_results.txt','r')
+    f = open('test_file','r')
     data = f.readlines()
     f.close()
     commands = []
@@ -14,13 +14,13 @@ if __name__ == '__main__':
     list_result = []
     for item in data:
         if item.startswith('+'):
-            #commands.append(item[2::].strip())
+            commands.append(item[2::].strip())
             num +=1
-            a= list_result.copy()            
+            list_result= list_result.copy()            
             list_result.clear()  
         else:  
-            a.append(item.strip())
-            result[num] = a
+            list_result.append(item.strip())
+            result[num] = list_result
 
 
     print(result)
