@@ -71,6 +71,8 @@ if __name__ == '__main__':
         else:
             if item.endswith("Chan\n"):
                 item = item.replace('Raymond Chan',fullname)
+            if item.startswith("usage"):
+                item = item.replace('ur',)            
             list_coms.append(item.strip())
             tests[commands] = list_coms
 
@@ -79,7 +81,7 @@ if __name__ == '__main__':
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
             expected = '\n'.join(tests[com_test])
-            com_test = com_test.replace('./ur.py','')
+            com_test = com_test.replace('./ur.py','a2_'+student)
             cmd = 'python3.6 a2_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
