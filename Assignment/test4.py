@@ -1,8 +1,6 @@
 import time
 import os
 
-class send_mail:
-	se
 
 if __name__ == '__main__':
 

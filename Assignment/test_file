@@ -6,6 +6,7 @@ Hello
 + ./ur.py -h
 usage
 Copyright 2018 - Raymond Chan
+test okay
 + ./ur.py -l user a2_test_data_2
 user1
 user2
