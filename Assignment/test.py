@@ -11,6 +11,7 @@ if __name__ == '__main__':
     f.close()
     result = {}
     list_result = []
+    fullname="Linh Van Ha"
     for item in data:
     #     if item.startswith('+'):
     #         commands =item.strip()
@@ -21,7 +22,10 @@ if __name__ == '__main__':
     #         result[commands] = list_result
 
         if item.endswith("Chan\n"):
-            print(True)
+            item = item.replace('Raymond Chan',fullname)
+            a = item.strip()
+            print(list(a))
+            break
     #print(result)
     # c = result["+ ./ur.py -u user5 -t daily a2_test_data_2 -v"]
     # cmd = 'python3.6 a2_vlha.py -u user5 -t daily a2_test_data_2 -v'
