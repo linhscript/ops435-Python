@@ -29,4 +29,4 @@ if __name__ == '__main__':
     test = p1.communicate()[0].decode('utf-8').strip('\n')    
     print(c)
     print("")
-    print(test)
+    print(list(test))
