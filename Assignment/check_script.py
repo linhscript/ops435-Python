@@ -75,7 +75,7 @@ if __name__ == '__main__':
                 item = item.replace('ur','a2_'+student)            
             list_coms.append(item.rstrip())
             tests[commands] = list_coms
-
+            break
     test_marks = {}
     num = 1
     for com_test in tests.keys():
