@@ -59,8 +59,8 @@ if __name__ == '__main__':
         else:
             if item.endswith("Chan\n"):
                 item = item.replace('Raymond Chan',fullname)
-        list_coms.append(item.strip())
-        tests[commands] = list_coms
+            list_coms.append(item.strip())
+            tests[commands] = list_coms
 
     test_marks = {}
     num = 1
