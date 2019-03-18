@@ -103,4 +103,4 @@ if __name__ == '__main__':
     total_test_marks = total_test_marks / 17 * 100 ## 17 commands to check
     print('Total test run marks: ',total_test_marks)
     grand_total = round((total_test_marks + total_doc_marks),2)
-    print('Total marks for script (max. 100):',color.UNDERLINE,grand_total,color.END) 
+    print('Total marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
