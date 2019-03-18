@@ -35,3 +35,5 @@ print(len(l1))
 
 t = 'Sat Dec 30 03:25:02 2017'
 print(t[0:6])
+
+asdasd
