@@ -60,9 +60,9 @@ if __name__ == '__main__':
     test_marks = {}
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
-            com_test.replace('./ur', student)
+            com_test = com_test.replace('./ur.py','')
 
-            cmd = 'python3.6 a2_'+student+'.py '+ com_test
+            cmd = 'python3.6 a2_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
             result = p1.communicate()[0].decode('utf-8').strip('\n')  

@@ -13,7 +13,7 @@ if __name__ == '__main__':
     list_result = []
     for item in data:
         if item.startswith('+'):
-            commands =item.strip()
+            commands =item.replace('+ ','').strip()
             list_result = list_result.copy()            
             list_result.clear()  
         else:  
@@ -22,12 +22,8 @@ if __name__ == '__main__':
 
 
     #print(result)
-    c = result["+ ./ur.py -l user a2_test_data_2"]
-    cmd = 'python a2_vlha.py -l user a2_test_data_2'
-    #print('Test run command',test_no,':',cmd)
-    p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-    test = p1.communicate()[0].decode('utf-8').strip('\n')    
-    print(c)
-    print("")
-    print(test.split("\n"))
-    print(c == test.split("\n"))
+    for com_test in result.keys():
+        if com_test.startswith('./ur'):
+            com_test = com_test.replace('./ur.py','')
+
+            print(com_test)
