@@ -13,7 +13,6 @@ import types
 import sys
 import os
 import subprocess
-import wget
 
 
 def preliminary_grading(stud_name):
