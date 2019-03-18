@@ -83,7 +83,7 @@ if __name__ == '__main__':
     total_test_marks = 0
     for item in test_marks:
         total_test_marks += test_marks[item] 
-    total_test_marks = total_test_marks / 19 * 46
+    total_test_marks = total_test_marks / 17 * 46
     print('Total test run marks: ',total_test_marks)
     grand_total = total_test_marks + total_doc_marks
     print('Total marks for script (max. 46):',grand_total) 
