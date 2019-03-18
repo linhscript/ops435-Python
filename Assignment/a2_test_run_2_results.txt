@@ -56,12 +56,16 @@ optional arguments:
 
 Copyright 2018 - Raymond Chan
 + ./ur.py -l user a2_test_data_2
+User list for a2_test_data_2
+============================
 user1
 user2
 user3
 user4
 user5
 + ./ur.py -l host a2_test_data_2
+Host list for a2_test_data_2
+============================
 10.40.43.226
 173.32.126.71
 173.34.180.5
@@ -118,6 +122,8 @@ Type of args for files <class 'list'>
 processing usage report for the following:
 reading login/logout record files ['a2_test_data_2']
 Generating list for user
+User list for a2_test_data_2
+============================
 user1
 user2
 user3
@@ -129,6 +135,8 @@ Type of args for files <class 'list'>
 processing usage report for the following:
 reading login/logout record files ['a2_test_data_2']
 Generating list for host
+Host list for a2_test_data_2
+============================
 10.40.43.226
 173.32.126.71
 173.34.180.5
