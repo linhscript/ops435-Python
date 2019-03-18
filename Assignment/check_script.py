@@ -21,7 +21,7 @@ def preliminary_grading(stud_name):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         student = input('Please enter your email user id:')
         fullname = input('Please enter your FULL NAME:')
     else:
