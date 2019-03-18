@@ -32,3 +32,6 @@ print (color.BOLD + 'Hello World !' + color.END)
 print("\033[1;32;40m Bright Green  \n")
 
 print(len(l1))
+
+t = 'Sat Dec 30 03:25:02 2017'
+print(t[0:6])
