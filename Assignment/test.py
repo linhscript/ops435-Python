@@ -6,22 +6,23 @@ import subprocess
 
 if __name__ == '__main__':
 
-    f = open('test_file','r')
+    f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
     result = {}
     list_result = []
     for item in data:
-        if item.startswith('+'):
-            commands =item.strip()
-            list_result = list_result.copy()            
-            list_result.clear()  
-        else:  
-            list_result.append(item.strip())
-            result[commands] = list_result
+    #     if item.startswith('+'):
+    #         commands =item.strip()
+    #         list_result = list_result.copy()            
+    #         list_result.clear()  
+    #     else:  
+    #         list_result.append(item.strip())
+    #         result[commands] = list_result
 
-
-    print(result)
+        if item.endswith("Chan\n"):
+            print(True)
+    #print(result)
     # c = result["+ ./ur.py -u user5 -t daily a2_test_data_2 -v"]
     # cmd = 'python3.6 a2_vlha.py -u user5 -t daily a2_test_data_2 -v'
     # #print('Test run command',test_no,':',cmd)

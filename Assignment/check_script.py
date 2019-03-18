@@ -23,8 +23,10 @@ def preliminary_grading(stud_name):
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         student = input('Please enter your email user id:')
+        fullname = input('Please enter your FULL NAME:')
     else:
         student = sys.argv[1]
+        fullname = sys.argv[2]
    
     a2_script = 'a2_'+student+'.py'
     if not os.path.isfile(a2_script):
@@ -54,7 +56,9 @@ if __name__ == '__main__':
             commands = item.replace('+ ','').strip()
             list_coms = list_coms.copy()            
             list_coms.clear()  
-        else:  
+        else:
+            if item. endswith("Chan\n"):
+                
             list_coms.append(item.strip())
             tests[commands] = list_coms
 
