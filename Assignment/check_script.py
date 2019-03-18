@@ -86,7 +86,7 @@ if __name__ == '__main__':
               
             if result == expected:
                 print(color.GREEN,'--test passed--',color.END)
-                test_marks[num] = return 'color.GREEN + 'OK'+ color.END'
+                test_marks[num] = print('color.GREEN + 'OK'+ color.END')
             else:
 
                 print(color.RED,color.BOLD,'--test failed--',color.END)
