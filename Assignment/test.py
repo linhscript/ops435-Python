@@ -17,7 +17,7 @@ if __name__ == '__main__':
             list_result = list_result.copy()            
             list_result.clear()  
         else:  
-            list_result.append(item)
+            list_result.append(item.strip())
             result[commands] = list_result
 
 
@@ -29,4 +29,5 @@ if __name__ == '__main__':
     test = p1.communicate()[0].decode('utf-8').strip('\n')    
     print(c)
     print("")
-    print(list(test))
+    print(test.split())
+    print(c == test.split())
