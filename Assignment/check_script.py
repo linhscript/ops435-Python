@@ -86,13 +86,13 @@ if __name__ == '__main__':
             result = p1.communicate()[0].decode('utf-8').strip('\n')
               
             if result == expected:
-                print(color.GREEN+'--test passed--'+color.END)
+                print(color.GREEN,'--test passed--',color.END)
                 test_marks[num] = 1
             else:
-                #for x in range(0,len(result)-1):
-                print('--test failed--')
-                print('---- expect:',expected)
-                print('----  given:',result)
+                for x in range(0,len(result)-1):
+                print(color.RED,color.BOLD,'--test failed--',color.END)
+                print(color.BLUE,color.UNDERLINE,'---- expect:',expected,color.END)
+                print(color.BLUE,color.UNDERLINE,'----  given:',result,,color.END)
                 test_marks[num] = 0
             num +=1
 
