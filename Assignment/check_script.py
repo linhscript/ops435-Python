@@ -51,19 +51,17 @@ if __name__ == '__main__':
     list_coms = []
     for item in data:
         if item.startswith('+'):
-            #commands = item.replace('+ ','').strip()
-            commands = item.replace('+ ','')
+            commands = item.replace('+ ','').strip()
             list_coms = list_coms.copy()            
             list_coms.clear()  
         else:  
             list_coms.append(item.strip())
             tests[commands] = list_coms
-
+            
     test_marks = {}
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
             expected = '\n'.join(tests[com_test])
-            expected = tests[com_test]
             com_test = com_test.replace('./ur.py','')
             cmd = 'python3.6 a2_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
