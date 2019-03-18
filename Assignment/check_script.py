@@ -86,13 +86,13 @@ if __name__ == '__main__':
               
             if result == expected:
                 print(color.GREEN,'--test passed--',color.END)
-                test_marks[num] = 1
+                test_marks[num] = color.GREEN + 'OK'+ color.END
             else:
 
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
-                test_marks[num] = 0
+                test_marks[num] = color.RED + 'Failed' + color.END
 
             num +=1
 
@@ -104,9 +104,3 @@ if __name__ == '__main__':
     print('Total test run marks: ',total_test_marks)
     grand_total = round((total_test_marks + total_doc_marks),2)
     print('Total marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
-    # a=expected.split('\n')
-    # print(a)
-    # print("")
-    # b=result.split('\n')
-    # print(b)
- 
