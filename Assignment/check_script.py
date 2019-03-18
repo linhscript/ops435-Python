@@ -60,7 +60,7 @@ if __name__ == '__main__':
     test_marks = {}
     for com_test in tests.keys():
         if com_test.startswith('./ur'):
-            expected = tests[com_test]
+            expected = '\n'.join(tests[com_test])
             com_test = com_test.replace('./ur.py','')
             cmd = 'python3.6 a2_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
