@@ -86,13 +86,13 @@ if __name__ == '__main__':
               
             if result == expected:
                 print(color.GREEN,'--test passed--',color.END)
-                test_marks[num] = print(color.GREEN + 'OK'+ color.END)
+                test_marks[num] = 1
             else:
 
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
-                test_marks[num] = color.RED + 'Failed' + color.END
+                test_marks[num] = 0
 
             num +=1
 
