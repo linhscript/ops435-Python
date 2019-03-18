@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     #print(result)
     c = result["+ ./ur.py -l user a2_test_data_2 -v"]
-    cmd = 'python3.6 a2_vlha.py -l user a2_test_data_2'
+    cmd = 'python3.6 a2_vlha.py -l user a2_test_data_2 -v'
     #print('Test run command',test_no,':',cmd)
     p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
     test = p1.communicate()[0].decode('utf-8').strip('\n')    
