@@ -65,7 +65,7 @@ if __name__ == '__main__':
     list_coms = []
     for item in data:
         if item.startswith('+'):
-            commands = item.replace('+  ','').strip()
+            commands = item.replace('+ ','').strip()
             list_coms = list_coms.copy()            
             list_coms.clear()  
         else:
@@ -96,6 +96,8 @@ if __name__ == '__main__':
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
                 test_marks[num] = 0
+
+
             num +=1
 
     print('Test Results:',test_marks)
@@ -106,5 +108,9 @@ if __name__ == '__main__':
     print('Total test run marks: ',total_test_marks)
     grand_total = round((total_test_marks + total_doc_marks),2)
     print('Total marks for script (max. 100):',color.UNDERLINE,color.YELLOW,grand_total,color.END) 
-
+    a=expected.split('\n')
+    print(a)
+    print("")
+    b=result.split('\n')
+    print(b)
  
