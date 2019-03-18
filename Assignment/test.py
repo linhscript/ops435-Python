@@ -27,5 +27,6 @@ if __name__ == '__main__':
     #print('Test run command',test_no,':',cmd)
     p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
     test = p1.communicate()[0].decode('utf-8').strip('\n')    
-    #print(c)
+    print(c)
+    print("")
     print(test)
