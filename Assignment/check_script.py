@@ -91,7 +91,7 @@ if __name__ == '__main__':
             else:
                 for x in range(0,len(result)-1):
                     if result[x] != expected[x]:
-                        print(x)
+                        print(result[x])
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
