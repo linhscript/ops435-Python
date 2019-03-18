@@ -95,6 +95,7 @@ if __name__ == '__main__':
                 print(color.RED,color.BOLD,'--test failed--',color.END)
                 print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,expected)
                 print(color.BLUE,color.UNDERLINE,'----  given:',color.END,result)
+                print(type(result))
                 test_marks[num] = 0
                 break
 
