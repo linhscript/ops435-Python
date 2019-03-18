@@ -21,13 +21,13 @@ def preliminary_grading(stud_name):
 
 
 if __name__ == '__main__':
-   if len(sys.argv) != 2:
+    if len(sys.argv) != 2:
         student = input('Please enter your email user id:')
-   else:
+    else:
         student = sys.argv[1]
    
-   a2_script = 'a2_'+student+'.py'
-   if not os.path.isfile(a2_script):
+    a2_script = 'a2_'+student+'.py'
+    if not os.path.isfile(a2_script):
         print('=' * 70)
         print('Your A2 script file',a2_script,'is not in the current direcoty')
         print('Please copy this script to the directory that contains your')
@@ -35,43 +35,11 @@ if __name__ == '__main__':
         print('=' * 70)
         sys.exit()
 
-   cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_data_2'
-   test_file = subprocess.run(cmd_file)
+    cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_data_2'
+    test_file = subprocess.run(cmd_file)
 
-   print(preliminary_grading(student))
-   print('=' * 40)
-   doc_marks = {} # data dictionary for documentation mark
-   total_doc_marks = 0
-   # test running student's script
-   tests = { 1:['20180101 1','20180102'],
-             2:['20180101 -1','20171231'],
-             3:['20180101 2','20180103'],
-             4:['--step 20180101 3','20180102\n20180103\n20180104\n'],
-             5:['20180701 500','20191113'],
-             6:['20189901 2','Error: wrong month entered'],
-             7:['20180199 2','Error: wrong day entered'],
-             8:['2018 2','Error: wrong date entered']
-            }
-   test_marks = {}
-   for test_no in range(1,len(tests)+1):
-       cmd = 'python3 a1_'+student+'.py '+tests[test_no][0]
-       print('Test run command',test_no,':',cmd)
-       p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-       result = p1.communicate()[0].decode('utf-8').strip('\n')
-       expected = tests[test_no][1].strip('\n')
-       if result == expected:
-          print('--test passed--')
-          test_marks[test_no] = 1
-       else:
-          print('--test failed--')
-          print('---- expect:',expected)
-          print('----  given:',result)
-          test_marks[test_no] = 0
-   print('Test Results:',test_marks)
-   total_test_marks = 0
-   for item in test_marks:
-       total_test_marks += test_marks[item] 
-   total_test_marks = total_test_marks / 8 * 46
-   print('Total test run marks: ',total_test_marks)
-   grand_total = total_test_marks + total_doc_marks
-   print('Total marks for script (max. 46):',grand_total)
+    print(preliminary_grading(student))
+    print('=' * 40)
+    doc_marks = {} # data dictionary for documentation mark
+    total_doc_marks = 0
+   

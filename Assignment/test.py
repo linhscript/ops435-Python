@@ -19,7 +19,7 @@ if __name__ == '__main__':
         else:  
             list_coms.append(item.strip())
             tests[commands] = list_coms
-
+    test_marks = {}
     for com_test in tests.key():
         if com_test.startswith('./ur'):
             com_test.replace('./ur', student)
