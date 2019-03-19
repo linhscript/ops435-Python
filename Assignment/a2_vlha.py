@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 '''
 OPS435 Assignment 2 - Winter 2018
-Program: ur_vlha.py
+Program: a2_vlha.py
 Author: "Van Linh Ha"
-The python code in this file ur_vlha.py is original work written by
+The python code in this file a2_vlha.py is original work written by
 "Van Linh Ha". No code in this file is copied from any other source 
 including any person, textbook, or on-line resource except those provided
 by the course instructor. I have not shared this python file with anyone
