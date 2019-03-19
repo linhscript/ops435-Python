@@ -33,7 +33,7 @@ user5   pts/5    192.0.172.162    Tue Dec 26 00:13:51 2017 - Tue Dec 26 00:14:04
 user5   pts/1    192.0.172.162    Mon Dec 25 23:40:51 2017 - Tue Dec 26 00:24:09 2017  (00:43)    
 user5   pts/0    192.0.172.162    Mon Dec 25 23:36:57 2017 - Tue Dec 26 00:25:37 2017  (00:48)    
 + ./ur.py -h
-usage: ur.py [-h] [-l {user,host}] [-r RHOST] [-t {daily,weekly,monthly}]
+usage: ur.py [-h ] [-l {user,host}] [-r RHOST] [-t {daily,weekly,monthly}]
              [-u USER] [-v]
              F [F ...]
 
