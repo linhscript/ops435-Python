@@ -69,7 +69,7 @@ if __name__ == '__main__':
 				print(color.GREEN,'--test passed--',color.END)
 				test_marks[num] = 1
 			else:
-				for x in range(0,len(result.split('\n'))-1)
+				for x in range(0,len(result.split('\n'))-1):
 					if result.split('\n')[x] != expected.split('\n'):
 						result.split('\n')[x] = result.split('\n')[x] + 'AAA'
 				print(color.RED,color.BOLD,'--test failed--',color.END)
