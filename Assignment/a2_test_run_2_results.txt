@@ -40,7 +40,7 @@ usage: ur.py [-h ] [-l {user,host}] [-r RHOST] [-t {daily,weekly,monthly}]
 Usage Report based on the last command
 
 positional arguments:
-  F                     list of files to be processed
+   F                     list of files to be processed
 
 optional arguments:
   -h, --help            show this help message and exit
