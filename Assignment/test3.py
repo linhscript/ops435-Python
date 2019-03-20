@@ -70,7 +70,7 @@ if __name__ == '__main__':
 				test_marks[num] = 1
 			else:
 				for x in range(0,len(result.split('\n'))-1):
-					if result.split('\n')[x] != expected.split('\n'):
+					if result.split('\n')[x] == expected.split('\n'):
 						result.split('\n')[x] = 'OKAAA'
 						print("OKAY")
 				print(color.RED,color.BOLD,'--test failed--',color.END)
