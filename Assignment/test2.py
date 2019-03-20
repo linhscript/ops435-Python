@@ -1,6 +1,8 @@
 import sys
 l1 = ['a','b','c']
 l2 = [1,2,3]
+l2[0] = 6
+print(l2)
 result = {}
 num = []
 for item in l2:
