@@ -71,7 +71,7 @@ if __name__ == '__main__':
 			else:
 				for x in range(0,len(result.split('\n'))-1):
 					if result.split('\n')[x] != expected.split('\n'):
-						result.split('\n')[x] = result.split('\n')[x] + 'AAA'
+						result.split('\n')[x] = 'OKAAA'
 				print(color.RED,color.BOLD,'--test failed--',color.END)
 				print(color.BLUE,color.UNDERLINE,'---- expect:',color.END,'\n',expected)
 				print(color.BLUE,color.UNDERLINE,'----  given:',color.END,'\n',result)
