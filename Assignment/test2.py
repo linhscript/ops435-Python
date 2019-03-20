@@ -1,8 +1,10 @@
 import sys
+l5='user1\nuser2\nuser3'
 l1 = ['a','b','c']
 l2 = [1,2,3]
 l2[0] = 6
-print(l2)
+l5.split('\n')[1] = 'AAA'
+print(l5)
 result = {}
 num = []
 for item in l2:

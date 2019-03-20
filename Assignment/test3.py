@@ -60,7 +60,7 @@ if __name__ == '__main__':
 			print(tests[com_test])
 			expected = '\n'.join(tests[com_test])
 			com_test = com_test.replace('./ur.py','')
-			cmd = 'python3.6 a2_'+student+'.py'+ com_test
+			cmd = 'python a2_'+student+'.py'+ com_test
 			print('Test run command',':',cmd)
 			p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
 			result = p1.communicate()[0].decode('utf-8').strip('\n')
@@ -70,7 +70,7 @@ if __name__ == '__main__':
 				test_marks[num] = 1
 			else:
 				for x in range(0,len(result.split('\n'))-1):
-					if result.split('\n')[x] == expected.split('\n'):
+					if result.split('\n')[x] != expected.split('\n'):
 						result.split('\n')[x] = 'OKAAA'
 						print("OKAY")
 				print(color.RED,color.BOLD,'--test failed--',color.END)
