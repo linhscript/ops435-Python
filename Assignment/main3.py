@@ -22,8 +22,6 @@ from bs4 import BeautifulSoup
 
 
 
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Class Cancellation Notification System",
      epilog = "Copyright 2018 - Linh Van Ha")
