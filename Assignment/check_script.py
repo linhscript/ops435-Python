@@ -38,7 +38,7 @@ if __name__ == '__main__':
     else:
         student = sys.argv[1]
    
-    a2_script = 'a2_'+student+'.py'
+    a2_script = 'ur_'+student+'.py'
     if not os.path.isfile(a2_script):
         print('=' * 70)
         print('Your A2 script file',a2_script,'is not in the current direcoty')
