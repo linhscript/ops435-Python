@@ -77,7 +77,7 @@ if __name__ == '__main__':
         if com_test.startswith('./ur'):
             expected = '\n'.join(tests[com_test])
             com_test = com_test.replace('./ur.py','')
-            cmd = 'python3.6 a2_'+student+'.py'+ com_test
+            cmd = 'python3.6 ur_'+student+'.py'+ com_test
             print('Test run command',':',cmd)
             p1 = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
             result = p1.communicate()[0].decode('utf-8').strip('\n')
