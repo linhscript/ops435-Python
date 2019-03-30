@@ -59,7 +59,7 @@ if __name__ == '__main__':
     f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
-    os.system("mv a2_test_run_2_results.txt a2_test_run_2_results")
+    os.system("mv a2_test_run_2_results.txt a2_test_data_2")
     tests = {}
     list_coms = []
     for item in data:
