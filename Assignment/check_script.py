@@ -50,15 +50,16 @@ if __name__ == '__main__':
     if not os.path.isfile("a2_test_run_2_results.txt"):
         cmd_file ='wget https://scs.senecac.on.ca/~raymond.chan/ops435/a2/a2_test_run_2_results.txt'
         os.system(cmd_file)
-        os.system("mv a2_test_run_2_results.txt a2_test_data_2")
+
     print(preliminary_grading(student))
     print('=' * 40)
     doc_marks = {} # data dictionary for documentation mark
     total_doc_marks = 0
 
-    f = open('a2_test_data_2','r')
+    f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
+    os.system("rm -rf a2_test_run_2_results.txt")
     tests = {}
     list_coms = []
     for item in data:
