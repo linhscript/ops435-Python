@@ -56,7 +56,7 @@ if __name__ == '__main__':
     doc_marks = {} # data dictionary for documentation mark
     total_doc_marks = 0
 
-    f = open('a2_test_run_2_results','r')
+    f = open('a2_test_run_2_results.txt','r')
     data = f.readlines()
     f.close()
     os.system("rm -rf a2_test_run_2_results.txt")
